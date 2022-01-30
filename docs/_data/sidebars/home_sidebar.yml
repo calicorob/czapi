@@ -10,8 +10,8 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: Core
-      url: core.html
+      title: Scraping
+      url: scraping.html
     output: web
     title: czapi
   output: web

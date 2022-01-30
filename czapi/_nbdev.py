@@ -2,9 +2,9 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {}
+index = {"make_soup": "00_scraping.ipynb"}
 
-modules = []
+modules = ["core/scraping.py"]
 
 doc_url = "https://calicorob.github.io/czapi/"
 
