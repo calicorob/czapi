@@ -11,7 +11,7 @@ entries:
       url: /
     - output: web,pdf
       title: Scraping
-      url: scraping.html
+      url: base.html
     - output: web,pdf
       title: Event
       url: event.html

@@ -2,7 +2,7 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"make_soup": "00_scraping.ipynb",
+index = {"make_soup": "00_base.ipynb",
          "get_event_name": "01_event.ipynb",
          "get_event_date": "01_event.ipynb"}
 
