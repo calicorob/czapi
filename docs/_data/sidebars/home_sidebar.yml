@@ -12,6 +12,9 @@ entries:
     - output: web,pdf
       title: Scraping
       url: scraping.html
+    - output: web,pdf
+      title: Event
+      url: event.html
     output: web
     title: czapi
   output: web

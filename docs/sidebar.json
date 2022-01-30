@@ -1,6 +1,7 @@
 {
   "czapi": {
     "Overview": "/",
-    "Scraping": "scraping.html"
+    "Scraping": "scraping.html",
+    "Event": "event.html"
   }
 }
