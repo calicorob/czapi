@@ -10,7 +10,7 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: Scraping
+      title: Base
       url: base.html
     - output: web,pdf
       title: Event
