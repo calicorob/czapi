@@ -7,7 +7,8 @@ index = {"make_soup": "00_base.ipynb",
          "get_event_date": "01_event.ipynb"}
 
 modules = ["core/scraping/base.py",
-           "core/scraping/event.py"]
+           "core/scraping/event.py",
+           "core/scraping/linescore.py"]
 
 doc_url = "https://calicorob.github.io/czapi/"
 
