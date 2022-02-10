@@ -4,7 +4,11 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"make_soup": "00_base.ipynb",
          "get_event_name": "01_event.ipynb",
-         "get_event_date": "01_event.ipynb"}
+         "get_event_date": "01_event.ipynb",
+         "generate_dict_from_table": "02_linescore.ipynb",
+         "get_table_from_index": "02_linescore.ipynb",
+         "get_boxscore": "02_linescore.ipynb",
+         "__get_boxscore": "02_linescore.ipynb"}
 
 modules = ["core/scraping/base.py",
            "core/scraping/event.py",
