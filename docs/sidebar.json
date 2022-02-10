@@ -3,6 +3,6 @@
     "Overview": "/",
     "Base": "base.html",
     "Event": "event.html",
-    "linescore": "linescore.html"
+    "Linescore": "linescore.html"
   }
 }

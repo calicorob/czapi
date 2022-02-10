@@ -16,7 +16,7 @@ entries:
       title: Event
       url: event.html
     - output: web,pdf
-      title: linescore
+      title: Linescore
       url: linescore.html
     output: web
     title: czapi
