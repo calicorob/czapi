@@ -5,11 +5,12 @@ __all__ = []
 # Cell
 
 from .core.scraping.linescore import (
-     get_boxscore_from_game_id
-    ,get_boxscore_from_event_draw_game_number
+     get_boxscore
+    ,get_full_boxscore
 )
 
 from .core.scraping.event import (
 
-    get_event_date
+     get_event_date
+    ,get_event_name
 )

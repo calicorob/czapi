@@ -6,51 +6,109 @@ __all__ = ['get_event_name', 'get_event_date']
 
 from .base import make_soup
 from bs4 import BeautifulSoup
+from typing import Union, Optional
 
 # Cell
 
-def _get_event_name(
+def _get_event_name_from_linescore_page(
      soup : BeautifulSoup
 )->str:
     """Returns the name of the event based on the event_id. Built so for larger-scale scraping less API calls are made."""
     return soup.find('title').string
 
+def _get_event_name_from_boxscore_page(
+
+    soup : BeautifulSoup
+
+)->str:
+    """Returns the name of the vent based on the game_id. Build so for larger-scale scrpaing less API calls are made."""
+
+    return soup.find('h3',attrs={'class':'entry-title-widget'}).string
+
 # Cell
 
+
+def _get_event_url(
+     cz_event_id : Union[str,int]
+)->str:
+    """Returns the cz event page url."""
+
+    return 'https://curlingzone.com/event.php?view=Main&eventid=%s#1'%cz_event_id
+
+def _get_game_url(
+    cz_game_id : Union[str,int]
+)->str:
+    """Returns the cz game page url."""
+
+    return 'https://www.curlingzone.com/game.php?1=1&showgameid=%s#1'%cz_game_id
+
 def get_event_name(
-     cz_event_id : str
+     cz_event_id : Optional[Union[str,int]] = None
+    ,cz_game_id : Optional[Union[str,int]] = None
     ,**request_kwargs
 )->str:
-    """Returns the name of the event based on the event_id."""
-
+    """Returns the name of the event based on the cz_event_id or the cz_game_id."""
 
     # TODO : how to handle situations where an event_id is valid but that event hasn't been conducted yet?
     # e.g. event_id = 12312321312 returns 'CurlingZone – Everything Curling'
 
-    url = 'https://curlingzone.com/event.php?view=Main&eventid=%s#1'%cz_event_id
-    return _get_event_name(make_soup(url=url,**request_kwargs))
+    ids = [cz_event_id,cz_game_id]
+    if all(ids) or not any(ids):
+        raise ValueError("One of cz_event_id or cz_game_id can be a non NoneType.")
+
+    if cz_event_id:
+        url = _get_event_url(cz_event_id = cz_event_id)
+        f = _get_event_name_from_linescore_page
+    else:
+        url = _get_game_url(cz_game_id = cz_game_id)
+        f = _get_event_name_from_boxscore_page
+
+    soup = make_soup(url=url,**request_kwargs)
+
+    return f(soup=soup)
 
 # Cell
 
-def _get_event_date(
+def _get_event_date_from_linescore_page(
 
      soup : BeautifulSoup
 )->str:
     """Returns the dates of the event from the passed soup. Built so for larger-scale scraping less API calls are made."""
     return soup.find(name='div',attrs={'class':'badge-widget'}).string
 
+def _get_event_date_from_boxscore_page(
+
+    soup : BeautifulSoup
+
+)->str:
+    """Returns the dates of the event from the passed soup. Built so for larger-scale scraping less API calls are made."""
+    return soup.find('div',attrs={'class':'badge-widget'}).string
+
 # Cell
 
 def get_event_date(
 
-     cz_event_id : str
+     cz_event_id : Optional[Union[str,int]] = None
+    ,cz_game_id : Optional[Union[str,int]] = None
     ,**request_kwargs
 
 )->str:
-    """Returns the dates of the event based on the event_id."""
+    """Returns the dates of the event based on the cz_event_id or the cz_game_id."""
 
     # TODO : how to handle situations where an event_id is valid but that event hasn't been conducted yet?
     # e.g. event_id = 12312321312 returns 'Recent'
 
-    url = 'https://curlingzone.com/event.php?view=Main&eventid=%s#1'%cz_event_id
-    return _get_event_date(make_soup(url=url,**request_kwargs))
+    ids = [cz_event_id,cz_game_id]
+    if all(ids) or not any(ids):
+        raise ValueError("One of cz_event_id or cz_game_id can be a non NoneType.")
+
+    if cz_event_id:
+        url = _get_event_url(cz_event_id = cz_event_id)
+        f = _get_event_date_from_linescore_page
+    else:
+        url = _get_game_url(cz_game_id = cz_game_id)
+        f = _get_event_date_from_boxscore_page
+
+    soup = make_soup(url=url,**request_kwargs)
+
+    return f(soup=soup)

@@ -10,6 +10,8 @@ index = {"make_soup": "00_base.ipynb",
          "get_boxscore_from_game_id": "02_linescore.ipynb",
          "get_table_from_index": "02_linescore.ipynb",
          "get_boxscore_from_event_draw_game_number": "02_linescore.ipynb",
+         "get_boxscore": "02_linescore.ipynb",
+         "get_full_boxscore": "02_linescore.ipynb",
          "BOXSCORE_KWARGS": "03_constants.ipynb"}
 
 modules = ["core/scraping/base.py",
