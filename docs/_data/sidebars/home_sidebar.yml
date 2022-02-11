@@ -24,9 +24,6 @@ entries:
     - output: web,pdf
       title: API
       url: api.html
-    - output: web,pdf
-      title: Title
-      url: scraping_dev.html
     output: web
     title: czapi
   output: web

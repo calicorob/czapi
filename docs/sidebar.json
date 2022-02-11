@@ -5,7 +5,6 @@
     "Event": "event.html",
     "Linescore": "linescore.html",
     "Constants": "constants.html",
-    "API": "api.html",
-    "Title": "scraping_dev.html"
+    "API": "api.html"
   }
 }
