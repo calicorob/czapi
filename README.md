@@ -51,4 +51,3 @@ game_result_dict
 
 
 > Output above should match the results from [here](https://curlingzone.com/game.php?1=1&showgameid=271145#1).
-![Boxscore example](nbs\imgs\game_by_game_id.png)
