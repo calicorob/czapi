@@ -145,7 +145,7 @@ def get_full_boxscore(
      cz_event_id : Optional[Union[str,int]] = None
     ,cz_draw_id : Optional[int] = None
     ,game_number : Optional[int] = None
-    ,cz_game_id : Optional[Union[str,str]] = None
+    ,cz_game_id : Optional[Union[str,int]] = None
     ,**request_kwargs
 
 )->dict:
