@@ -51,3 +51,6 @@ game_result_dict
 
 
 > Output above should match the results from [here](https://curlingzone.com/game.php?1=1&showgameid=271145#1).
+
+## About czapi
+czapi is a Python library for scraping curling linescores.
