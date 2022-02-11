@@ -149,7 +149,7 @@ def get_full_boxscore(
     ,**request_kwargs
 
 )->dict:
-    """Returns a curling boxscore (dict) based on the cz_event_id, cz_draw_id and game_number or the cz_game_id with additional information."""
+    """Returns a curling boxscore with additional information (dict) based on the cz_event_id, cz_draw_id and game_number or the cz_game_id."""
 
     # seems like redundant get requests - can probably be cut down - future development
     event = get_event_name(cz_event_id = cz_event_id, cz_game_id = cz_game_id, **request_kwargs)
