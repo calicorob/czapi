@@ -93,7 +93,7 @@ def get_table_from_index(
 
 def get_boxscore_from_event_draw_game_number(
 
-     cz_event_id : str
+     cz_event_id : Union[str,int]
     ,cz_draw_id : int
     ,game_number : int
     ,**request_kwargs

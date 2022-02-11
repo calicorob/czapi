@@ -15,7 +15,8 @@ index = {"make_soup": "00_base.ipynb",
 modules = ["core/scraping/base.py",
            "core/scraping/event.py",
            "core/scraping/linescore.py",
-           "core/scraping/constants.py"]
+           "core/scraping/constants.py",
+           "api.py"]
 
 doc_url = "https://calicorob.github.io/czapi/"
 

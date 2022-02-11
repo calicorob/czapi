@@ -127,7 +127,7 @@ nb_path: "nbs\02_linescore.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p>The picture below highlights where the cz_game_id is found in the CurlingZone <a href="https://curlingzone.com/game.php?1=1&amp;showgameid=271145#1">URL</a>.</p>
+<blockquote><p>The picture below highlights where the cz_game_id is found on the CurlingZone <a href="https://curlingzone.com/game.php?1=1&amp;showgameid=271145#1">page</a>.</p>
 </blockquote>
 
 </div>
@@ -215,7 +215,7 @@ nb_path: "nbs\02_linescore.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_boxscore_from_event_draw_game_number" class="doc_header"><code>get_boxscore_from_event_draw_game_number</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L94" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_boxscore_from_event_draw_game_number</code>(<strong><code>cz_event_id</code></strong>:<code>str</code>, <strong><code>cz_draw_id</code></strong>:<code>int</code>, <strong><code>game_number</code></strong>:<code>int</code>, <strong>**<code>request_kwargs</code></strong>)</p>
+<h4 id="get_boxscore_from_event_draw_game_number" class="doc_header"><code>get_boxscore_from_event_draw_game_number</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L94" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_boxscore_from_event_draw_game_number</code>(<strong><code>cz_event_id</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>], <strong><code>cz_draw_id</code></strong>:<code>int</code>, <strong><code>game_number</code></strong>:<code>int</code>, <strong>**<code>request_kwargs</code></strong>)</p>
 </blockquote>
 <p>Returns a curling boxscore (dict) based on the cz_event_id, cz_draw_id and game_number.</p>
 
