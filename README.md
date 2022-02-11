@@ -1,4 +1,4 @@
-# czapi
+# Welcome to czapi
 > A basic API for scraping curling boxscores off of the popular <a href='https://www.curlingzone.com'>CurlingZone</a> website. 
 
 
