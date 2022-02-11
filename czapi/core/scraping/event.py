@@ -4,7 +4,7 @@ __all__ = ['get_event_name', 'get_event_date']
 
 # Cell
 
-from .base import *
+from .base import make_soup
 from bs4 import BeautifulSoup
 
 # Cell

@@ -49,6 +49,7 @@ nb_path: "nbs\02_linescore.ipynb"
 <div class="output_markdown rendered_html output_subarea ">
 <h4 id="generate_dict_from_table" class="doc_header"><code>generate_dict_from_table</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L15" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>generate_dict_from_table</code>(<strong><code>table</code></strong>:<code>Tag</code>)</p>
 </blockquote>
+<p>Helper function for returning the curling boxscore from a bs4 Tag object.</p>
 
 </div>
 
@@ -78,8 +79,9 @@ nb_path: "nbs\02_linescore.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_boxscore_from_table" class="doc_header"><code>get_boxscore_from_table</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L45" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_boxscore_from_table</code>(<strong><code>table</code></strong>:<code>Tag</code>)</p>
+<h4 id="get_boxscore_from_table" class="doc_header"><code>get_boxscore_from_table</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L46" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_boxscore_from_table</code>(<strong><code>table</code></strong>:<code>Tag</code>)</p>
 </blockquote>
+<p>Wraps generate_dict_from_table for clarity / error handling.</p>
 
 </div>
 
@@ -102,8 +104,9 @@ nb_path: "nbs\02_linescore.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_boxscore_from_game_id" class="doc_header"><code>get_boxscore_from_game_id</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L57" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_boxscore_from_game_id</code>(<strong><code>cz_game_id</code></strong>:<code>str</code>, <strong>**<code>request_kwargs</code></strong>)</p>
+<h4 id="get_boxscore_from_game_id" class="doc_header"><code>get_boxscore_from_game_id</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L59" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_boxscore_from_game_id</code>(<strong><code>cz_game_id</code></strong>:<code>str</code>, <strong>**<code>request_kwargs</code></strong>)</p>
 </blockquote>
+<p>Returns a curling boxscore (dict) based on the cz_game_id.</p>
 
 </div>
 
@@ -124,7 +127,15 @@ nb_path: "nbs\02_linescore.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="/czapi/./imgs/game_by_game_id.png" alt="Game by gameid"></p>
+<blockquote><p>The picture below highlights where the cz_game_id is found in the CurlingZone <a href="https://curlingzone.com/game.php?1=1&amp;showgameid=271145#1">URL</a>.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/czapi/./imgs/game_by_game_id.png" alt="game by gameid"></p>
 
 </div>
 </div>
@@ -179,8 +190,9 @@ nb_path: "nbs\02_linescore.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_table_from_index" class="doc_header"><code>get_table_from_index</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L73" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_table_from_index</code>(<strong><code>tables</code></strong>:<code>List</code>[<code>Tag</code>], <strong><code>game_number</code></strong>:<code>int</code>)</p>
+<h4 id="get_table_from_index" class="doc_header"><code>get_table_from_index</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L76" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_table_from_index</code>(<strong><code>tables</code></strong>:<code>List</code>[<code>Tag</code>], <strong><code>game_number</code></strong>:<code>int</code>)</p>
 </blockquote>
+<p>Returns a 'table' Tag object from a list of 'table' Tag objects. This helper function allows for 1 indexing instead of 0.</p>
 
 </div>
 
@@ -203,32 +215,9 @@ nb_path: "nbs\02_linescore.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_boxscore_from_event_and_draw_id" class="doc_header"><code>get_boxscore_from_event_and_draw_id</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L92" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_boxscore_from_event_and_draw_id</code>(<strong><code>cz_event_id</code></strong>:<code>str</code>, <strong><code>cz_draw_id</code></strong>:<code>int</code>, <strong><code>game_number</code></strong>:<code>int</code>, <strong>**<code>request_kwargs</code></strong>)</p>
+<h4 id="get_boxscore_from_event_draw_game_number" class="doc_header"><code>get_boxscore_from_event_draw_game_number</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L94" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_boxscore_from_event_draw_game_number</code>(<strong><code>cz_event_id</code></strong>:<code>str</code>, <strong><code>cz_draw_id</code></strong>:<code>int</code>, <strong><code>game_number</code></strong>:<code>int</code>, <strong>**<code>request_kwargs</code></strong>)</p>
 </blockquote>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="__get_boxscore" class="doc_header"><code>__get_boxscore</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L127" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>__get_boxscore</code>(<strong><code>tables</code></strong>:<code>List</code>[<code>Tag</code>], <strong><code>game_number</code></strong>:<code>int</code>)</p>
-</blockquote>
+<p>Returns a curling boxscore (dict) based on the cz_event_id, cz_draw_id and game_number.</p>
 
 </div>
 
@@ -247,6 +236,21 @@ nb_path: "nbs\02_linescore.ipynb"
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>The picture below highlights where the cz_event_id and cz_draw_id are found and how the games are numbered (game_number) on the CurlingZone <a href="https://curlingzone.com/event.php?eventid=6400&amp;view=Scores&amp;showdrawid=2#1">page</a>.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/czapi/./imgs/game_by_event_draw_game_number.png" alt="game by event id, draw and game number"></p>
+
+</div>
+</div>
+</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -254,41 +258,13 @@ nb_path: "nbs\02_linescore.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span>
-    
-    <span class="s1">&#39;Wayne Tuck Jr.&#39;</span> <span class="p">:</span> <span class="p">{</span>
-        
-         <span class="s1">&#39;href&#39;</span> <span class="p">:</span> <span class="s1">&#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144353&amp;profileid=12486#1&#39;</span>
-        <span class="p">,</span><span class="s1">&#39;hammer&#39;</span> <span class="p">:</span> <span class="kc">True</span>
-        <span class="p">,</span><span class="s1">&#39;score&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">]</span>
-        <span class="p">,</span><span class="s1">&#39;finalscore&#39;</span> <span class="p">:</span> <span class="s1">&#39;5&#39;</span>
-        
-    <span class="p">}</span>
-    <span class="p">,</span><span class="s1">&#39;Matthew Hall&#39;</span> <span class="p">:</span> <span class="p">{</span>
-        
-         <span class="s1">&#39;href&#39;</span> <span class="p">:</span> <span class="s1">&#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144347&amp;profileid=12435#1&#39;</span>
-        <span class="p">,</span><span class="s1">&#39;hammer&#39;</span> <span class="p">:</span> <span class="kc">False</span>
-        <span class="p">,</span><span class="s1">&#39;score&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;4&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">]</span>
-        <span class="p">,</span><span class="s1">&#39;finalscore&#39;</span> <span class="p">:</span> <span class="s1">&#39;7&#39;</span>
-    <span class="p">}</span>
-    
-<span class="p">}</span>
-
-<span class="k">assert</span> <span class="n">get_boxscore_from_event_and_draw_id</span><span class="p">(</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">actual_dict</span> <span class="o">=</span>  <span class="n">get_boxscore_from_event_draw_game_number</span><span class="p">(</span>
 
      <span class="n">cz_event_id</span> <span class="o">=</span> <span class="mi">6400</span>
     <span class="p">,</span><span class="n">cz_draw_id</span> <span class="o">=</span> <span class="mi">2</span>
     <span class="p">,</span><span class="n">game_number</span> <span class="o">=</span> <span class="mi">1</span>
 
-<span class="p">)</span> <span class="o">==</span> <span class="n">d</span>
-
-<span class="k">assert</span> <span class="n">get_boxscore_from_event_and_draw_id</span><span class="p">(</span>
-
-     <span class="n">cz_event_id</span> <span class="o">=</span> <span class="mi">70000</span>
-    <span class="p">,</span><span class="n">cz_draw_id</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="p">,</span><span class="n">game_number</span> <span class="o">=</span> <span class="mi">1</span>
-
-<span class="p">)</span> <span class="o">==</span> <span class="p">{}</span>
+<span class="p">)</span> <span class="o">==</span> <span class="n">expected_dict</span>
 </pre></div>
 
     </div>
