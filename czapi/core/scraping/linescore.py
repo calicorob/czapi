@@ -67,13 +67,20 @@ def get_boxscore_from_game_id(
 
     url = 'https://www.curlingzone.com/game.php?1=1&showgameid=%s#1'%cz_game_id
     soup = make_soup(url=url,**request_kwargs)
-    table = soup.find(**BOXSCORE_KWARGS)
+    return _get_boxscore_from_game_id(soup=soup)
 
+def _get_boxscore_from_game_id(
+
+    soup : BeautifulSoup
+
+)->Union[dict,defaultdict]:
+    table = soup.find(**BOXSCORE_KWARGS)
     try:
         return get_boxscore_from_table(table=table)
 
     except ValueError as e:
         return {}
+
 
 
 # Cell
@@ -107,6 +114,19 @@ def get_boxscore_from_event_draw_game_number(
     url = 'https://curlingzone.com/event.php?eventid=%s&view=Scores&showdrawid=%s#1'%(cz_event_id,cz_draw_id)
     soup = make_soup(url=url,**request_kwargs)
 
+    return _get_boxscore_from_event_draw_game_number(
+
+         soup = soup
+        ,game_number = game_number
+
+    )
+
+def _get_boxscore_from_event_draw_game_number(
+
+     soup : BeautifulSoup
+    ,game_number : int
+
+)->Union[dict,defaultdict]:
     tables = soup.find_all(**BOXSCORE_KWARGS)
     try:
         table = get_table_from_index(tables = tables, game_number = game_number)
@@ -124,7 +144,7 @@ def get_boxscore(
      cz_event_id : Optional[Union[str,int]] = None
     ,cz_draw_id : Optional[int] = None
     ,game_number : Optional[int] = None
-    ,cz_game_id : Optional[Union[str,str]] = None
+    ,cz_game_id : Optional[Union[str,int]] = None
     ,**request_kwargs
 )->Union[dict,defaultdict]:
     """Returns a curling boxscore (dict) based on the cz_event_id, cz_draw_id and game_number or the cz_game_id."""

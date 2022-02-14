@@ -190,7 +190,7 @@ nb_path: "nbs\02_linescore.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_table_from_index" class="doc_header"><code>get_table_from_index</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L81" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_table_from_index</code>(<strong><code>tables</code></strong>:<code>List</code>[<code>Tag</code>], <strong><code>game_number</code></strong>:<code>int</code>)</p>
+<h4 id="get_table_from_index" class="doc_header"><code>get_table_from_index</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L88" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_table_from_index</code>(<strong><code>tables</code></strong>:<code>List</code>[<code>Tag</code>], <strong><code>game_number</code></strong>:<code>int</code>)</p>
 </blockquote>
 <p>Returns a 'table' Tag object from a list of 'table' Tag objects. This helper function allows for 1 indexing instead of 0.</p>
 
@@ -215,7 +215,7 @@ nb_path: "nbs\02_linescore.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_boxscore_from_event_draw_game_number" class="doc_header"><code>get_boxscore_from_event_draw_game_number</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L99" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_boxscore_from_event_draw_game_number</code>(<strong><code>cz_event_id</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>], <strong><code>cz_draw_id</code></strong>:<code>int</code>, <strong><code>game_number</code></strong>:<code>int</code>, <strong>**<code>request_kwargs</code></strong>)</p>
+<h4 id="get_boxscore_from_event_draw_game_number" class="doc_header"><code>get_boxscore_from_event_draw_game_number</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L106" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_boxscore_from_event_draw_game_number</code>(<strong><code>cz_event_id</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>], <strong><code>cz_draw_id</code></strong>:<code>int</code>, <strong><code>game_number</code></strong>:<code>int</code>, <strong>**<code>request_kwargs</code></strong>)</p>
 </blockquote>
 <p>Returns a curling boxscore (dict) based on the cz_event_id, cz_draw_id and game_number.</p>
 
@@ -287,7 +287,7 @@ nb_path: "nbs\02_linescore.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_boxscore" class="doc_header"><code>get_boxscore</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L122" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_boxscore</code>(<strong><code>cz_event_id</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>NoneType</code>]=<em><code>None</code></em>, <strong><code>cz_draw_id</code></strong>:<code>Optional</code>[<code>int</code>]=<em><code>None</code></em>, <strong><code>game_number</code></strong>:<code>Optional</code>[<code>int</code>]=<em><code>None</code></em>, <strong><code>cz_game_id</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong>**<code>request_kwargs</code></strong>)</p>
+<h4 id="get_boxscore" class="doc_header"><code>get_boxscore</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L142" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_boxscore</code>(<strong><code>cz_event_id</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>NoneType</code>]=<em><code>None</code></em>, <strong><code>cz_draw_id</code></strong>:<code>Optional</code>[<code>int</code>]=<em><code>None</code></em>, <strong><code>game_number</code></strong>:<code>Optional</code>[<code>int</code>]=<em><code>None</code></em>, <strong><code>cz_game_id</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>NoneType</code>]=<em><code>None</code></em>, <strong>**<code>request_kwargs</code></strong>)</p>
 </blockquote>
 <p>Returns a curling boxscore (dict) based on the cz_event_id, cz_draw_id and game_number or the cz_game_id.</p>
 
@@ -349,7 +349,7 @@ nb_path: "nbs\02_linescore.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_full_boxscore" class="doc_header"><code>get_full_boxscore</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L144" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_full_boxscore</code>(<strong><code>cz_event_id</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>NoneType</code>]=<em><code>None</code></em>, <strong><code>cz_draw_id</code></strong>:<code>Optional</code>[<code>int</code>]=<em><code>None</code></em>, <strong><code>game_number</code></strong>:<code>Optional</code>[<code>int</code>]=<em><code>None</code></em>, <strong><code>cz_game_id</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong>**<code>request_kwargs</code></strong>)</p>
+<h4 id="get_full_boxscore" class="doc_header"><code>get_full_boxscore</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L164" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_full_boxscore</code>(<strong><code>cz_event_id</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>NoneType</code>]=<em><code>None</code></em>, <strong><code>cz_draw_id</code></strong>:<code>Optional</code>[<code>int</code>]=<em><code>None</code></em>, <strong><code>game_number</code></strong>:<code>Optional</code>[<code>int</code>]=<em><code>None</code></em>, <strong><code>cz_game_id</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong>**<code>request_kwargs</code></strong>)</p>
 </blockquote>
 <p>Returns a curling boxscore with additional information (dict) based on the cz_event_id, cz_draw_id and game_number or the cz_game_id.</p>
 
