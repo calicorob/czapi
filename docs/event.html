@@ -54,7 +54,31 @@ nb_path: "nbs\01_event.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_event_name" class="doc_header"><code>get_event_name</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/event.py#L45" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_event_name</code>(<strong><code>cz_event_id</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>NoneType</code>]=<em><code>None</code></em>, <strong><code>cz_game_id</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>NoneType</code>]=<em><code>None</code></em>, <strong>**<code>request_kwargs</code></strong>)</p>
+<h4 id="get_url" class="doc_header"><code>get_url</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/event.py#L50" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_url</code>(<strong><code>soup_type</code></strong>:<code>str</code>, <strong>**<code>url_kwargs</code></strong>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="get_event_name" class="doc_header"><code>get_event_name</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/event.py#L67" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_event_name</code>(<strong><code>cz_event_id</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>NoneType</code>]=<em><code>None</code></em>, <strong><code>cz_draw_id</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>NoneType</code>]=<em><code>None</code></em>, <strong><code>cz_game_id</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>NoneType</code>]=<em><code>None</code></em>, <strong>**<code>request_kwargs</code></strong>)</p>
 </blockquote>
 <p>Returns the name of the event based on the cz_event_id or the cz_game_id.</p>
 
@@ -87,7 +111,7 @@ nb_path: "nbs\01_event.ipynb"
 <span class="k">assert</span> <span class="n">get_event_name</span><span class="p">(</span><span class="n">cz_game_id</span> <span class="o">=</span> <span class="mi">297288</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;Scotties Tournament of Hearts&#39;</span>
 
 <span class="c1"># random event</span>
-<span class="k">assert</span> <span class="n">get_event_name</span><span class="p">(</span><span class="n">cz_event_id</span> <span class="o">=</span> <span class="s1">&#39;6938&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;Hokkaido Bank Curling Classic&#39;</span>
+<span class="k">assert</span> <span class="n">get_event_name</span><span class="p">(</span><span class="n">cz_event_id</span> <span class="o">=</span> <span class="s1">&#39;6938&#39;</span><span class="p">,</span><span class="n">cz_draw_id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;Hokkaido Bank Curling Classic&#39;</span>
 <span class="k">assert</span> <span class="n">get_event_name</span><span class="p">(</span><span class="n">cz_game_id</span> <span class="o">=</span> <span class="mi">284807</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;Hokkaido Bank Curling Classic&#39;</span>
 
 <span class="k">try</span><span class="p">:</span>
@@ -126,7 +150,7 @@ nb_path: "nbs\01_event.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_event_date" class="doc_header"><code>get_event_date</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/event.py#L89" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_event_date</code>(<strong><code>cz_event_id</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>NoneType</code>]=<em><code>None</code></em>, <strong><code>cz_game_id</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>NoneType</code>]=<em><code>None</code></em>, <strong>**<code>request_kwargs</code></strong>)</p>
+<h4 id="get_event_date" class="doc_header"><code>get_event_date</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/event.py#L137" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_event_date</code>(<strong><code>cz_event_id</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>NoneType</code>]=<em><code>None</code></em>, <strong><code>cz_draw_id</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>NoneType</code>]=<em><code>None</code></em>, <strong><code>cz_game_id</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>NoneType</code>]=<em><code>None</code></em>, <strong>**<code>request_kwargs</code></strong>)</p>
 </blockquote>
 <p>Returns the dates of the event based on the cz_event_id or the cz_game_id.</p>
 
@@ -155,7 +179,7 @@ nb_path: "nbs\01_event.ipynb"
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># scotties</span>
-<span class="k">assert</span> <span class="n">get_event_date</span><span class="p">(</span><span class="n">cz_event_id</span> <span class="o">=</span> <span class="s1">&#39;6900&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;Jan 28 - Feb 6, 2022&#39;</span>
+<span class="k">assert</span> <span class="n">get_event_date</span><span class="p">(</span><span class="n">cz_event_id</span> <span class="o">=</span> <span class="s1">&#39;6900&#39;</span><span class="p">,</span><span class="n">cz_draw_id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;Jan 28 - Feb 6, 2022&#39;</span>
 <span class="k">assert</span> <span class="n">get_event_date</span><span class="p">(</span><span class="n">cz_game_id</span> <span class="o">=</span> <span class="mi">297288</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;Jan 28 - Feb 6, 2022&#39;</span>
 
 <span class="k">try</span><span class="p">:</span>

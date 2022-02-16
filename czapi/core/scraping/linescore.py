@@ -6,8 +6,8 @@ __all__ = ['generate_dict_from_table', 'get_boxscore_from_table', 'get_boxscore_
 # Cell
 
 from .base import make_soup
-from .constants import BOXSCORE_KWARGS
-from .event import get_event_name,get_event_date
+from .constants import BOXSCORE_KWARGS, LINESCORE_SOUP_TYPE, BOXSCORE_SOUP_TYPE
+from .event import get_event_name,get_event_date, get_url, _get_event_name, _get_event_date
 from bs4 import BeautifulSoup, Tag
 from collections import defaultdict
 from typing import List, Union, Optional
@@ -159,8 +159,25 @@ def get_boxscore(
     else:
         return get_boxscore_from_game_id(cz_game_id)
 
+def _get_boxscore(
+
+     soup : BeautifulSoup
+    ,soup_type : str
+    ,**game_kwargs
+
+)->Union[dict,defaultdict]:
+
+    soup_type = soup_type.lower()
+
+    if soup_type == LINESCORE_SOUP_TYPE:
+        return _get_boxscore_from_event_draw_game_number(soup=soup,**game_kwargs)
+    elif soup_type == BOXSCORE_SOUP_TYPE:
+        return _get_boxscore_from_game_id(soup=soup,**game_kwargs)
+    else:
+        raise NotImplementedError("%s soup type is not implemented."%soup_type)
+
 # Cell
-def get_full_boxscore(
+def _get_full_boxscore(
      cz_event_id : Optional[Union[str,int]] = None
     ,cz_draw_id : Optional[int] = None
     ,game_number : Optional[int] = None
@@ -168,7 +185,10 @@ def get_full_boxscore(
     ,**request_kwargs
 
 )->dict:
-    """Returns a curling boxscore with additional information (dict) based on the cz_event_id, cz_draw_id and game_number or the cz_game_id."""
+    """
+        Returns a curling boxscore with additional information (dict) based on the cz_event_id, cz_draw_id and game_number or the cz_game_id.
+        Depreciated since this makes too many get requests (slow).
+    """
 
     # seems like redundant get requests - can probably be cut down - future development
     event = get_event_name(cz_event_id = cz_event_id, cz_game_id = cz_game_id, **request_kwargs)
@@ -179,3 +199,51 @@ def get_full_boxscore(
     _hash = sha256(str(boxscore).encode('utf-8')).hexdigest()
 
     return {d[0]:{**d[-1],'date':date,'event':event,'hash':_hash} for d in boxscore.items()}
+
+
+def get_full_boxscore(
+
+     cz_event_id : Optional[Union[str,int]] = None
+    ,cz_draw_id : Optional[int] = None
+    ,game_number : Optional[int] = None
+    ,cz_game_id : Optional[Union[str,int]] = None
+    ,**request_kwargs
+
+
+):
+    """Returns a curling boxscore with additional information (dict) based on the cz_event_id, cz_draw_id and game_number or the cz_game_id."""
+
+    option_1 = [cz_event_id, cz_draw_id,game_number]
+    option_2 = cz_game_id
+
+    if all([all(option_1), option_2]) or not any([all(option_1),option_2]):
+        raise ValueError("One combination of cz_event_id, cz_draw_id and game_number or cz_game_id must be non NoneType.")
+
+    if all(option_1):
+        soup_type = LINESCORE_SOUP_TYPE
+        url_kwargs = {
+             'cz_event_id' : cz_event_id
+            ,'cz_draw_id' : cz_draw_id
+        }
+        game_kwargs = {
+            'game_number' : game_number
+        }
+    else:
+        soup_type = BOXSCORE_SOUP_TYPE
+        url_kwargs = {
+            'cz_game_id' : cz_game_id
+        }
+        game_kwargs = {}
+
+
+    url = get_url(soup_type = soup_type, **url_kwargs)
+    soup = make_soup(url=url,**request_kwargs)
+
+    event = _get_event_name(soup=soup,soup_type = soup_type)
+    date = _get_event_date(soup=soup,soup_type = soup_type)
+    boxscore = _get_boxscore(soup=soup,soup_type=soup_type,**game_kwargs)
+
+    _hash = sha256(str(boxscore).encode('utf-8')).hexdigest()
+
+    return {d[0]:{**d[-1],'date':date,'event':event,'hash':_hash} for d in boxscore.items()}
+
