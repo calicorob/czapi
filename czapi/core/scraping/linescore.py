@@ -162,7 +162,7 @@ def get_boxscore(
     ,game_number : Optional[int] = None
     ,cz_game_id : Optional[Union[str,str]] = None
     ,**request_kwargs
-)->Union[dict,defaultdict]:
+)->defaultdict:
     """Returns a curling boxscore (dict) based on the cz_event_id, cz_draw_id and game_number or the cz_game_id.
        Not recommended for use as it makes too many get requests (slow). Use get_full_boxscore instead.
 
@@ -213,7 +213,7 @@ def get_full_boxscore(
     ,**request_kwargs
 
 
-):
+)->dict:
     """
         Returns a curling boxscore (dict) with data hash based on the cz_event_id, cz_draw_id and game_number or the cz_game_id.
         get_full_boxscore limits the number of get_requests that are made to the CurlingZone site.
