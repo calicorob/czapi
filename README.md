@@ -5,7 +5,8 @@
 ## Install
 
 ```
-    pip install czapi
+pip install czapi
+
 ```
 
 ## How to use
