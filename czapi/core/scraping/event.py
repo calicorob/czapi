@@ -53,6 +53,7 @@ def get_url(
     ,**url_kwargs
 
 )->str:
+    """Helper function for returning the correct CurlingZone URL."""
 
     soup_type = soup_type.lower()
 

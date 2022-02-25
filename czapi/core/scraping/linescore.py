@@ -146,7 +146,10 @@ def get_boxscore(
     ,cz_game_id : Optional[Union[str,str]] = None
     ,**request_kwargs
 )->Union[dict,defaultdict]:
-    """Returns a curling boxscore (dict) based on the cz_event_id, cz_draw_id and game_number or the cz_game_id."""
+    """Returns a curling boxscore (dict) based on the cz_event_id, cz_draw_id and game_number or the cz_game_id.
+       Not recommended for use as it makes too many get requests (slow). Use get_full_boxscore instead.
+
+    """
 
     option_1 = [cz_event_id, cz_draw_id,game_number]
     option_2 = cz_game_id
@@ -186,7 +189,7 @@ def _get_full_boxscore(
 
 )->dict:
     """
-        Returns a curling boxscore with additional information (dict) based on the cz_event_id, cz_draw_id and game_number or the cz_game_id.
+        Returns a curling boxscore (dict) with data hash based on the cz_event_id, cz_draw_id and game_number or the cz_game_id.
         Depreciated since this makes too many get requests (slow).
     """
 
@@ -211,7 +214,10 @@ def get_full_boxscore(
 
 
 ):
-    """Returns a curling boxscore with additional information (dict) based on the cz_event_id, cz_draw_id and game_number or the cz_game_id."""
+    """
+        Returns a curling boxscore (dict) with data hash based on the cz_event_id, cz_draw_id and game_number or the cz_game_id.
+        get_full_boxscore limits the number of get_requests that are made to the CurlingZone site.
+    """
 
     option_1 = [cz_event_id, cz_draw_id,game_number]
     option_2 = cz_game_id
@@ -243,6 +249,7 @@ def get_full_boxscore(
     date = _get_event_date(soup=soup,soup_type = soup_type)
     boxscore = _get_boxscore(soup=soup,soup_type=soup_type,**game_kwargs)
 
+    # will utf-8 always work?
     _hash = sha256(str(boxscore).encode('utf-8')).hexdigest()
 
     return {d[0]:{**d[-1],'date':date,'event':event,'hash':_hash} for d in boxscore.items()}

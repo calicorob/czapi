@@ -8,7 +8,7 @@ Not implemented yet :)
 
 ## How to use
 
-```
+```python
 import czapi.api as api
 
 game_result_dict = api.get_full_boxscore(cz_game_id = 271145)
