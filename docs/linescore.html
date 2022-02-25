@@ -47,247 +47,7 @@ nb_path: "nbs\02_linescore.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="generate_dict_from_table" class="doc_header"><code>generate_dict_from_table</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L17" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>generate_dict_from_table</code>(<strong><code>table</code></strong>:<code>Tag</code>)</p>
-</blockquote>
-<p>Helper function for returning the curling boxscore from a bs4 Tag object.</p>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_boxscore_from_table" class="doc_header"><code>get_boxscore_from_table</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L48" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_boxscore_from_table</code>(<strong><code>table</code></strong>:<code>Tag</code>)</p>
-</blockquote>
-<p>Wraps generate_dict_from_table for clarity / error handling.</p>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_boxscore_from_game_id" class="doc_header"><code>get_boxscore_from_game_id</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L61" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_boxscore_from_game_id</code>(<strong><code>cz_game_id</code></strong>:<code>str</code>, <strong>**<code>request_kwargs</code></strong>)</p>
-</blockquote>
-<p>Returns a curling boxscore (dict) based on the cz_game_id.</p>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p>The picture below highlights where the cz_game_id is found on the CurlingZone <a href="https://curlingzone.com/game.php?1=1&amp;showgameid=271145#1">page</a>.</p>
-</blockquote>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="/czapi/./imgs/game_by_game_id.png" alt="game by gameid"></p>
-
-</div>
-</div>
-</div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">expected_dict</span> <span class="o">=</span> <span class="p">{</span>
-    
-    <span class="s1">&#39;Wayne Tuck Jr.&#39;</span> <span class="p">:</span> <span class="p">{</span>
-        
-         <span class="s1">&#39;href&#39;</span> <span class="p">:</span> <span class="s1">&#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144353&amp;profileid=12486#1&#39;</span>
-        <span class="p">,</span><span class="s1">&#39;hammer&#39;</span> <span class="p">:</span> <span class="kc">True</span>
-        <span class="p">,</span><span class="s1">&#39;score&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">]</span>
-        <span class="p">,</span><span class="s1">&#39;finalscore&#39;</span> <span class="p">:</span> <span class="s1">&#39;5&#39;</span>
-        
-    <span class="p">}</span>
-    <span class="p">,</span><span class="s1">&#39;Matthew Hall&#39;</span> <span class="p">:</span> <span class="p">{</span>
-        
-         <span class="s1">&#39;href&#39;</span> <span class="p">:</span> <span class="s1">&#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144347&amp;profileid=12435#1&#39;</span>
-        <span class="p">,</span><span class="s1">&#39;hammer&#39;</span> <span class="p">:</span> <span class="kc">False</span>
-        <span class="p">,</span><span class="s1">&#39;score&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;4&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;0&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">]</span>
-        <span class="p">,</span><span class="s1">&#39;finalscore&#39;</span> <span class="p">:</span> <span class="s1">&#39;7&#39;</span>
-    <span class="p">}</span>
-    
-<span class="p">}</span>
-
-<span class="n">actual_dict</span> <span class="o">=</span> <span class="n">get_boxscore_from_game_id</span><span class="p">(</span><span class="n">cz_game_id</span> <span class="o">=</span> <span class="mi">271145</span><span class="p">)</span>
-
-<span class="k">assert</span> <span class="n">actual_dict</span> <span class="o">==</span> <span class="n">expected_dict</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_table_from_index" class="doc_header"><code>get_table_from_index</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L89" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_table_from_index</code>(<strong><code>tables</code></strong>:<code>List</code>[<code>Tag</code>], <strong><code>game_number</code></strong>:<code>int</code>)</p>
-</blockquote>
-<p>Returns a 'table' Tag object from a list of 'table' Tag objects. This helper function allows for 1 indexing instead of 0.</p>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_boxscore_from_event_draw_game_number" class="doc_header"><code>get_boxscore_from_event_draw_game_number</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L107" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_boxscore_from_event_draw_game_number</code>(<strong><code>cz_event_id</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>], <strong><code>cz_draw_id</code></strong>:<code>int</code>, <strong><code>game_number</code></strong>:<code>int</code>, <strong>**<code>request_kwargs</code></strong>)</p>
-</blockquote>
-<p>Returns a curling boxscore (dict) based on the cz_event_id, cz_draw_id and game_number.</p>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote><p>The picture below highlights where the cz_event_id and cz_draw_id are found and how the games are numbered (game_number) on the CurlingZone <a href="https://curlingzone.com/event.php?eventid=6400&amp;view=Scores&amp;showdrawid=2#1">page</a>.</p>
-</blockquote>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><img src="/czapi/./imgs/game_by_event_draw_game_number.png" alt="game by event id, draw and game number"></p>
-
-</div>
-</div>
-</div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">actual_dict</span> <span class="o">=</span>  <span class="n">get_boxscore_from_event_draw_game_number</span><span class="p">(</span>
-
-     <span class="n">cz_event_id</span> <span class="o">=</span> <span class="mi">6400</span>
-    <span class="p">,</span><span class="n">cz_draw_id</span> <span class="o">=</span> <span class="mi">2</span>
-    <span class="p">,</span><span class="n">game_number</span> <span class="o">=</span> <span class="mi">1</span>
-
-<span class="p">)</span> 
-
-<span class="k">assert</span> <span class="n">actual_dict</span> <span class="o">==</span> <span class="n">expected_dict</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_boxscore" class="doc_header"><code>get_boxscore</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L141" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_boxscore</code>(<strong><code>cz_event_id</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>NoneType</code>]=<em><code>None</code></em>, <strong><code>cz_draw_id</code></strong>:<code>Optional</code>[<code>int</code>]=<em><code>None</code></em>, <strong><code>game_number</code></strong>:<code>Optional</code>[<code>int</code>]=<em><code>None</code></em>, <strong><code>cz_game_id</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong>**<code>request_kwargs</code></strong>)</p>
+<h4 id="get_boxscore" class="doc_header"><code>get_boxscore</code><a href="https://github.com/calicorob/czapi/tree/master/czapi/core/scraping/linescore.py#L158" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_boxscore</code>(<strong><code>cz_event_id</code></strong>:<code>Union</code>[<code>str</code>, <code>int</code>, <code>NoneType</code>]=<em><code>None</code></em>, <strong><code>cz_draw_id</code></strong>:<code>Optional</code>[<code>int</code>]=<em><code>None</code></em>, <strong><code>game_number</code></strong>:<code>Optional</code>[<code>int</code>]=<em><code>None</code></em>, <strong><code>cz_game_id</code></strong>:<code>Optional</code>[<code>str</code>]=<em><code>None</code></em>, <strong>**<code>request_kwargs</code></strong>)</p>
 </blockquote>
 <p>Returns a curling boxscore (dict) based on the cz_event_id, cz_draw_id and game_number or the cz_game_id.
 Not recommended for use as it makes too many get requests (slow). Use get_full_boxscore instead.</p>
@@ -305,36 +65,6 @@ Not recommended for use as it makes too many get requests (slow). Use get_full_b
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">actual_dict</span> <span class="o">=</span> <span class="n">get_boxscore</span><span class="p">(</span>
-
-    <span class="n">cz_game_id</span> <span class="o">=</span> <span class="mi">271145</span>
-
-<span class="p">)</span>
-<span class="k">assert</span> <span class="n">actual_dict</span> <span class="o">==</span> <span class="n">expected_dict</span>
-
-<span class="n">actual_dict</span> <span class="o">=</span> <span class="n">get_boxscore</span><span class="p">(</span>
-     <span class="n">cz_event_id</span> <span class="o">=</span> <span class="mi">6400</span>
-    <span class="p">,</span><span class="n">cz_draw_id</span> <span class="o">=</span> <span class="mi">2</span>
-    <span class="p">,</span><span class="n">game_number</span> <span class="o">=</span> <span class="mi">1</span>
-
-<span class="p">)</span> 
-<span class="k">assert</span> <span class="n">actual_dict</span> <span class="o">==</span> <span class="n">expected_dict</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 </div>
     {% endraw %}
@@ -368,52 +98,6 @@ get_full_boxscore limits the number of get_requests that are made to the Curling
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">_get_full_boxscore</span><span class="p">(</span><span class="n">cz_game_id</span> <span class="o">=</span> <span class="mi">271145</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>{&#39;Wayne Tuck Jr.&#39;: {&#39;href&#39;: &#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144353&amp;profileid=12486#1&#39;,
-  &#39;hammer&#39;: True,
-  &#39;score&#39;: [&#39;0&#39;, &#39;2&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;1&#39;, &#39;1&#39;, &#39;1&#39;, &#39;0&#39;],
-  &#39;finalscore&#39;: &#39;5&#39;,
-  &#39;date&#39;: &#39;Jan 17 - 19, 2020&#39;,
-  &#39;event&#39;: &#39;Ontario Tankard - Open Qualifier&#39;,
-  &#39;hash&#39;: &#39;91877086316aa83ea479d50515bddaaac92bcb34e4f6611c3b893de32dd8c9fe&#39;},
- &#39;Matthew Hall&#39;: {&#39;href&#39;: &#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144347&amp;profileid=12435#1&#39;,
-  &#39;hammer&#39;: False,
-  &#39;score&#39;: [&#39;0&#39;, &#39;0&#39;, &#39;4&#39;, &#39;0&#39;, &#39;0&#39;, &#39;1&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;2&#39;],
-  &#39;finalscore&#39;: &#39;7&#39;,
-  &#39;date&#39;: &#39;Jan 17 - 19, 2020&#39;,
-  &#39;event&#39;: &#39;Ontario Tankard - Open Qualifier&#39;,
-  &#39;hash&#39;: &#39;91877086316aa83ea479d50515bddaaac92bcb34e4f6611c3b893de32dd8c9fe&#39;}}</pre>
-</div>
-
-</div>
-
-</div>
-</div>
 
 </div>
     {% endraw %}
@@ -464,6 +148,24 @@ get_full_boxscore limits the number of get_requests that are made to the Curling
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>The picture below highlights where the cz_game_id is found on the CurlingZone <a href="https://curlingzone.com/game.php?1=1&amp;showgameid=271145#1">page</a>. 
+<img src="/czapi/./imgs/game_by_game_id.png" alt="game by gameid"></p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote><p>The picture below highlights where the cz_event_id and cz_draw_id are found and how the games are numbered (game_number) on the CurlingZone <a href="https://curlingzone.com/event.php?eventid=6400&amp;view=Scores&amp;showdrawid=2#1">page</a>. 
+<img src="/czapi/./imgs/game_by_event_draw_game_number.png" alt="game by event id, draw and game number"></p>
+</blockquote>
+
+</div>
+</div>
+</div>
 </div>
  
 
