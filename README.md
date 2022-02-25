@@ -4,7 +4,9 @@
 
 ## Install
 
-Not implemented yet :)
+```
+    pip install czapi
+```
 
 ## How to use
 
