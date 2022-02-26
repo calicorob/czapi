@@ -52,6 +52,16 @@ event_date
 
 ### Boxscore
 
+A boxscore is returned as a dictionary of team names, game information dictionary key, value pairs. 
+
+Each game information dictionary contains: 
+* 'href' key with a corresponding string value of CurlingZone IDs identifying the team.
+* 'hammer' key with corresponding boolean value of whether or not that team started the game with hammer.
+* 'score' key with corresponding list of string value of end-by-end results for that team.
+* 'date' key with corresponding string value of the date of the event.
+* 'event' key with corresponding string value of the name of the event.
+* 'hash' key with corresponding SHA256 hash of the entire boxscore. 
+
 Here is an example of getting the boxscore information using only the game id. 
 
 ```python

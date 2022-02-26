@@ -175,6 +175,22 @@ nb_path: "nbs\index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>A boxscore is returned as a dictionary of team names, game information dictionary key, value pairs.</p>
+<p>Each game information dictionary contains:</p>
+<ul>
+<li>'href' key with a corresponding string value of CurlingZone IDs identifying the team.</li>
+<li>'hammer' key with corresponding boolean value of whether or not that team started the game with hammer.</li>
+<li>'score' key with corresponding list of string value of end-by-end results for that team.</li>
+<li>'date' key with corresponding string value of the date of the event.</li>
+<li>'event' key with corresponding string value of the name of the event.</li>
+<li>'hash' key with corresponding SHA256 hash of the entire boxscore. </li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>Here is an example of getting the boxscore information using only the game id.</p>
 
 </div>
