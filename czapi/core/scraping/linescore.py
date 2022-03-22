@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup, Tag
 from collections import defaultdict
 from typing import List, Union, Optional
 from hashlib import sha256
+import re
 
 # Internal Cell
 def generate_dict_from_table(
@@ -41,6 +42,37 @@ def generate_dict_from_table(
             d[team]['finalscore'] = tag.b.string.strip()
 
     return d
+
+# Internal Cell
+def _get_draw_from_boxscore_page(
+     soup : BeautifulSoup
+)->str:
+    return 'Not supported for boxscore page.'
+
+def _get_draw_from_linesore_page(
+    soup : BeautifulSoup
+
+)->str:
+
+    return soup.find(name='option',attrs={'selected':'selected'}).string
+
+def _get_draw(
+
+     soup : BeautifulSoup
+    ,soup_type : str
+    ,**kwargs
+
+)->str:
+    soup_type = soup_type.lower()
+
+    if soup_type == LINESCORE_SOUP_TYPE:
+        return _get_draw_from_linesore_page(soup=soup,**kwargs)
+    elif soup_type == BOXSCORE_SOUP_TYPE:
+        return _get_draw_from_boxscore_page(soup=soup,**kwargs)
+    else:
+        raise NotImplementedError("%s soup type is not implemented."%soup_type)
+
+
 
 # Internal Cell
 
@@ -234,12 +266,17 @@ def get_full_boxscore(
         game_kwargs = {
             'game_number' : game_number
         }
+
+        draw_kwargs = {}
+
+
     else:
         soup_type = BOXSCORE_SOUP_TYPE
         url_kwargs = {
             'cz_game_id' : cz_game_id
         }
         game_kwargs = {}
+        draw_kwargs = {}
 
 
     url = get_url(soup_type = soup_type, **url_kwargs)
@@ -248,9 +285,10 @@ def get_full_boxscore(
     event = _get_event_name(soup=soup,soup_type = soup_type)
     date = _get_event_date(soup=soup,soup_type = soup_type)
     boxscore = _get_boxscore(soup=soup,soup_type=soup_type,**game_kwargs)
+    draw = _get_draw(soup=soup,soup_type = soup_type,**draw_kwargs)
 
     # will utf-8 always work?
     _hash = sha256(str(boxscore).encode('utf-8')).hexdigest()
 
-    return {d[0]:{**d[-1],'date':date,'event':event,'hash':_hash} for d in boxscore.items()}
+    return {d[0]:{**d[-1],'date':date,'event':event,'hash':_hash,'draw':draw} for d in boxscore.items()}
 
