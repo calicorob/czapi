@@ -78,16 +78,16 @@ game_result_dict
       'finalscore': '5',
       'date': 'Jan 17 - 19, 2020',
       'event': 'Ontario Tankard - Open Qualifier',
-      'hash': '91877086316aa83ea479d50515bddaaac92bcb34e4f6611c3b893de32dd8c9fe',
-      'draw': 'Not supported for boxscore page.'},
+      'draw': 'Not supported for boxscore page.',
+      'hash': '944b4b512a0b43e5d8dc569a6483863108d16dcc659eec5d73c58a252eed5507'},
      'Matthew Hall': {'href': 'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1',
       'hammer': False,
       'score': ['0', '0', '4', '0', '0', '1', '0', '0', '0', '2'],
       'finalscore': '7',
       'date': 'Jan 17 - 19, 2020',
       'event': 'Ontario Tankard - Open Qualifier',
-      'hash': '91877086316aa83ea479d50515bddaaac92bcb34e4f6611c3b893de32dd8c9fe',
-      'draw': 'Not supported for boxscore page.'}}
+      'draw': 'Not supported for boxscore page.',
+      'hash': '944b4b512a0b43e5d8dc569a6483863108d16dcc659eec5d73c58a252eed5507'}}
 
 
 
@@ -109,16 +109,16 @@ another_game_result_dict
       'finalscore': '5',
       'date': 'Aug 22 - 24, 2019',
       'event': 'Curling Night in America',
-      'hash': '7055aa6331cda8edb23322869371a3e3e9cefc0830e63a64ca363ee0a8d716c0',
-      'draw': 'Draw: 3'},
+      'draw': 'Draw: 3',
+      'hash': 'a30c99626ce44a68a8d3c48c5f8f6b86eea054bef1170c591c1efebebf61f549'},
      'John Shuster': {'href': 'event.php?view=Team&eventid=6100&teamid=136086&profileid=12473#1',
       'hammer': True,
       'score': ['1', '0', '1', '0', '0', '2', '0', '3'],
       'finalscore': '7',
       'date': 'Aug 22 - 24, 2019',
       'event': 'Curling Night in America',
-      'hash': '7055aa6331cda8edb23322869371a3e3e9cefc0830e63a64ca363ee0a8d716c0',
-      'draw': 'Draw: 3'}}
+      'draw': 'Draw: 3',
+      'hash': 'a30c99626ce44a68a8d3c48c5f8f6b86eea054bef1170c591c1efebebf61f549'}}
 
 
 
