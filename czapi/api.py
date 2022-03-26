@@ -5,7 +5,8 @@ __all__ = []
 # Cell
 
 from .core.scraping.linescore import (
-     get_boxscore_without_hash
+     get_boxscore
+    ,get_boxscore_with_game_details
     ,get_full_boxscore
 )
 
