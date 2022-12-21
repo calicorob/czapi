@@ -2,9 +2,6 @@
   "czapi": {
     "Overview": "/",
     "Base": "base.html",
-    "Event": "event.html",
-    "Linescore": "linescore.html",
-    "Constants": "constants.html",
     "API": "api.html"
   }
 }

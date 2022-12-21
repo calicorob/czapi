@@ -13,15 +13,6 @@ entries:
       title: Base
       url: base.html
     - output: web,pdf
-      title: Event
-      url: event.html
-    - output: web,pdf
-      title: Linescore
-      url: linescore.html
-    - output: web,pdf
-      title: Constants
-      url: constants.html
-    - output: web,pdf
       title: API
       url: api.html
     output: web
