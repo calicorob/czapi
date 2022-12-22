@@ -9,7 +9,7 @@ from requests.models import Response
 from bs4 import BeautifulSoup,Tag
 from abc import ABC, abstractproperty, abstractmethod
 from dataclasses import dataclass
-from typing import Optional, List
+from typing import Optional, List, Any
 from collections import defaultdict
 from hashlib import sha256
 
@@ -71,10 +71,10 @@ def generate_dict_from_table(
 
 def hash_obj(
 
-     obj
-    ,hash_type = 'sha256'
-    ,encoding='utf-8'
-):
+     obj : Any
+    ,hash_type : str = 'sha256'
+    ,encoding : str='utf-8'
+)->str:
     """Hashes an object according to the passed hash_type and encoding."""
     hash_type = hash_type.lower()
     encoding = encoding.lower()
@@ -150,7 +150,7 @@ class LinescorePage(Page):
     def generate_boxscores(self)->List[defaultdict]:
         return [generate_dict_from_table(table=table) for table in self.tables]
 
-    def get_boxscore_from(self,cz_game_id : int):
+    def get_boxscore_from(self,cz_game_id : int)->defaultdict:
         if cz_game_id <= 0:
             raise ValueError('cz_game_id must be 1 or greater.')
 
