@@ -20,13 +20,6 @@ linescore_page = api.LinescorePage(cz_event_id = 5000, cz_draw_id = 1)
 linescore_page.boxscores
 ```
 
-    c:\users\0rc44\documents\github\czapi\czapi\core\scraping\base.py:37: GuessedAtParserWarning: No parser was explicitly specified, so I'm using the best available HTML parser for this system ("html.parser"). This usually isn't a problem, but if you run this code on another system, or in a different virtual environment, it may use a different parser and behave differently.
-    
-    The code that caused this warning is on line 37 of the file c:\users\0rc44\documents\github\czapi\czapi\core\scraping\base.py. To get rid of this warning, pass the additional argument 'features="html.parser"' to the BeautifulSoup constructor.
-    
-      return BeautifulSoup(response.content,**kwargs)
-    
-
 
 
 

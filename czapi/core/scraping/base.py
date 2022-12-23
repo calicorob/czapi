@@ -34,7 +34,7 @@ def make_soup_from(
 )->BeautifulSoup:
     """ Returns a Beautifulsoup object for the passed URL."""
 
-    return BeautifulSoup(response.content,**kwargs)
+    return BeautifulSoup(response.content,features='html.parser',**kwargs)
 
 # Internal Cell
 
