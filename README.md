@@ -14,9 +14,20 @@ pip install czapi
 import czapi.api as api
 ```
 
-```python
-linescore_page = api.LinescorePage(cz_event_id = 5000, cz_draw_id = 1)
+## General Information
+The czapi is based around the LinescorePage object which represents a linescore page, shown below:
 
+![Linescore Page](nbs\imgs\game_by_event_draw_game_number.png)
+
+Creating an instance of the LinescorePage class gives access to every boxscore on that linescore page.
+
+```python
+linescore_page = api.LinescorePage(cz_event_id = 6400, cz_draw_id = 2)
+```
+
+The boxscores on the linescore page can be accessed through the `boxscores` property which returns a list of boxscores.
+
+```python
 linescore_page.boxscores
 ```
 
@@ -24,78 +35,188 @@ linescore_page.boxscores
 
 
     [defaultdict(list,
-                 {'Rob Retchless': defaultdict(list,
-                              {'href': 'event.php?view=Team&eventid=5000&teamid=114936&profileid=9625#1',
+                 {'Wayne Tuck Jr.': defaultdict(list,
+                              {'href': 'event.php?view=Team&eventid=6400&teamid=144353&profileid=12486#1',
                                'hammer': True,
-                               'score': ['2', '0', '0', '0', 'X', '', '', ''],
-                               'finalscore': '2'}),
-                  'Jordan Chandler': defaultdict(list,
-                              {'href': 'event.php?view=Team&eventid=5000&teamid=114942&profileid=9627#1',
+                               'score': ['0',
+                                '2',
+                                '0',
+                                '0',
+                                '0',
+                                '0',
+                                '1',
+                                '1',
+                                '1',
+                                '0'],
+                               'finalscore': '5'}),
+                  'Matthew Hall': defaultdict(list,
+                              {'href': 'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1',
                                'hammer': False,
-                               'score': ['0', '1', '3', '3', 'X', '', '', ''],
+                               'score': ['0',
+                                '0',
+                                '4',
+                                '0',
+                                '0',
+                                '1',
+                                '0',
+                                '0',
+                                '0',
+                                '2'],
                                'finalscore': '7'})}),
      defaultdict(list,
-                 {'Charlie Robert': defaultdict(list,
-                              {'href': 'event.php?view=Team&eventid=5000&teamid=114939&profileid=10028#1',
-                               'hammer': True,
-                               'score': ['1', '0', '0', '0', '1', 'X', 'X', ''],
-                               'finalscore': '2'}),
-                  'Brent Ross': defaultdict(list,
-                              {'href': 'event.php?view=Team&eventid=5000&teamid=114949&profileid=9887#1',
-                               'hammer': False,
-                               'score': ['0', '2', '1', '1', '0', 'X', 'X', ''],
-                               'finalscore': '4'})}),
-     defaultdict(list,
-                 {'John Willsey': defaultdict(list,
-                              {'href': 'event.php?view=Team&eventid=5000&teamid=114940&profileid=9707#1',
+                 {'Dayna Deruelle': defaultdict(list,
+                              {'href': 'event.php?view=Team&eventid=6400&teamid=144346&profileid=26636#1',
                                'hammer': False,
                                'score': ['0',
                                 '0',
+                                '1',
+                                '0',
+                                '0',
+                                '0',
+                                '0',
+                                'X',
+                                '',
+                                ''],
+                               'finalscore': '1'}),
+                  'Tyler Stewart': defaultdict(list,
+                              {'href': 'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477#1',
+                               'hammer': True,
+                               'score': ['0',
+                                '2',
+                                '0',
+                                '2',
+                                '1',
+                                '1',
+                                '4',
+                                'X',
+                                '',
+                                ''],
+                               'finalscore': '10'})}),
+     defaultdict(list,
+                 {'Mark Kean': defaultdict(list,
+                              {'href': 'event.php?view=Team&eventid=6400&teamid=144348&profileid=25961#1',
+                               'hammer': True,
+                               'score': ['2',
                                 '0',
                                 '1',
                                 '0',
+                                '0',
+                                '0',
+                                '1',
                                 '3',
-                                '0',
-                                '1',
-                                'X'],
-                               'finalscore': '5'}),
-                  'ShopWoodstock.com': defaultdict(list,
-                              {'href': 'event.php?view=Team&eventid=5000&teamid=114952&profileid=9703#1',
-                               'hammer': True,
+                                'X',
+                                ''],
+                               'finalscore': '7'}),
+                  'Jason March': defaultdict(list,
+                              {'href': 'event.php?view=Team&eventid=6400&teamid=144350#1',
+                               'hammer': False,
                                'score': ['0',
+                                '0',
+                                '0',
+                                '0',
+                                '2',
+                                '1',
+                                '0',
+                                '0',
+                                'X',
+                                ''],
+                               'finalscore': '3'})}),
+     defaultdict(list,
+                 {'Richard Krell': defaultdict(list,
+                              {'href': 'event.php?view=Team&eventid=6400&teamid=144349&profileid=25962#1',
+                               'hammer': True,
+                               'score': ['2',
+                                '0',
+                                '1',
+                                '0',
+                                '2',
+                                '1',
+                                '1',
+                                'X',
+                                '',
+                                ''],
+                               'finalscore': '7'}),
+                  'Rob Ainsley': defaultdict(list,
+                              {'href': 'event.php?view=Team&eventid=6400&teamid=144345&profileid=15779#1',
+                               'hammer': False,
+                               'score': ['0',
+                                '0',
+                                '0',
                                 '1',
                                 '0',
                                 '0',
                                 '0',
-                                '0',
-                                '1',
-                                '0',
-                                'X'],
-                               'finalscore': '2'})}),
-     defaultdict(list,
-                 {'Wayne Tuck Jr.': defaultdict(list,
-                              {'href': 'event.php?view=Team&eventid=5000&teamid=114937&profileid=9716#1',
-                               'hammer': False,
-                               'score': ['0', '0', '2', '2', '0', '0', '2', 'X'],
-                               'finalscore': '6'}),
-                  'Charlie Richard': defaultdict(list,
-                              {'href': 'event.php?view=Team&eventid=5000&teamid=114958#1',
-                               'hammer': True,
-                               'score': ['0', '2', '0', '0', '0', '2', '0', 'X'],
-                               'finalscore': '4'})}),
-     defaultdict(list,
-                 {'Connor Duhaime': defaultdict(list,
-                              {'href': 'event.php?view=Team&eventid=5000&teamid=114946&profileid=9629#1',
-                               'hammer': False,
-                               'score': ['0', '0', '0', '0', 'X', '', '', ''],
-                               'finalscore': '0'}),
-                  'Daryl Shane': defaultdict(list,
-                              {'href': 'event.php?view=Team&eventid=5000&teamid=114941&profileid=9762#1',
-                               'hammer': True,
-                               'score': ['1', '1', '3', '1', 'X', '', '', ''],
-                               'finalscore': '6'})})]
+                                'X',
+                                '',
+                                ''],
+                               'finalscore': '1'})})]
 
 
+
+A boxscore is returned as a dictionary of team names, game information dictionary key, value pairs.
+
+Each game information dictionary contains:
+
+* 'href' key with a corresponding string value of CurlingZone IDs identifying the team.
+* 'hammer' key with corresponding boolean value of whether or not that team started the game with hammer.
+* 'score' key with corresponding list of string value of end-by-end results for that team.
+* 'finalscore' key with corresponding final score for the team.
+
+Individual boxscores can be accessed through the `get_boxscore_from` method.
+
+```python
+linescore_page.get_boxscore_from(cz_game_id = 1)
+```
+
+
+
+
+    defaultdict(list,
+                {'Wayne Tuck Jr.': defaultdict(list,
+                             {'href': 'event.php?view=Team&eventid=6400&teamid=144353&profileid=12486#1',
+                              'hammer': True,
+                              'score': ['0',
+                               '2',
+                               '0',
+                               '0',
+                               '0',
+                               '0',
+                               '1',
+                               '1',
+                               '1',
+                               '0'],
+                              'finalscore': '5'}),
+                 'Matthew Hall': defaultdict(list,
+                             {'href': 'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1',
+                              'hammer': False,
+                              'score': ['0',
+                               '0',
+                               '4',
+                               '0',
+                               '0',
+                               '1',
+                               '0',
+                               '0',
+                               '0',
+                               '2'],
+                              'finalscore': '7'})})
+
+
+
+`cz_game_id` argument corresponds to the number the boxscore appears in on the linescore page.
+
+The LinescorePage object contains these properties which details information on the boxscores:
+
+* event_name
+* event_date
+* draw
+
+```python
+print(linescore_page.event_name,',',linescore_page.event_date,',' ,linescore_page.draw)
+```
+
+    Ontario Tankard - Open Qualifier , Jan 17 - 19, 2020 , Draw: 2
+    
 
 ## About czapi
 czapi is a Python library for scraping curling linescores.
