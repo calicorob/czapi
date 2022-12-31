@@ -165,7 +165,8 @@ Each game information dictionary contains:
 Individual boxscores can be accessed through the `get_boxscore_from` method.
 
 ```python
-linescore_page.get_boxscore_from(cz_game_id = 1)
+boxscore = linescore_page.get_boxscore_from(cz_game_id = 1)
+boxscore
 ```
 
 
@@ -217,6 +218,28 @@ print(linescore_page.event_name,',',linescore_page.event_date,',' ,linescore_pag
 
     Ontario Tankard - Open Qualifier , Jan 17 - 19, 2020 , Draw: 2
     
+
+The boxscore dictionary can be flattened into a list of lists using the `flatten_boxscore` helper function.
+
+```python
+api.flatten_boxscore(boxscore=boxscore)
+```
+
+
+
+
+    [['Wayne Tuck Jr.',
+      'event.php?view=Team&eventid=6400&teamid=144353&profileid=12486#1',
+      True,
+      ['0', '2', '0', '0', '0', '0', '1', '1', '1', '0'],
+      '5'],
+     ['Matthew Hall',
+      'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1',
+      False,
+      ['0', '0', '4', '0', '0', '1', '0', '0', '0', '2'],
+      '7']]
+
+
 
 ## About czapi
 czapi is a Python library for scraping curling linescores.
