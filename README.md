@@ -65,7 +65,7 @@ linescore_page.boxscores
                                'finalscore': '7'})}),
      defaultdict(list,
                  {'Dayna Deruelle': defaultdict(list,
-                              {'href': 'event.php?view=Team&eventid=6400&teamid=144346&profileid=26636#1',
+                              {'href': 'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435&eventid=6400&teamid=144346&profileid=26636#1',
                                'hammer': False,
                                'score': ['0',
                                 '0',
@@ -79,7 +79,7 @@ linescore_page.boxscores
                                 ''],
                                'finalscore': '1'}),
                   'Tyler Stewart': defaultdict(list,
-                              {'href': 'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477#1',
+                              {'href': 'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435&eventid=6400&teamid=144352&profileid=12477#1',
                                'hammer': True,
                                'score': ['0',
                                 '2',
@@ -94,7 +94,7 @@ linescore_page.boxscores
                                'finalscore': '10'})}),
      defaultdict(list,
                  {'Mark Kean': defaultdict(list,
-                              {'href': 'event.php?view=Team&eventid=6400&teamid=144348&profileid=25961#1',
+                              {'href': 'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477&eventid=6400&teamid=144348&profileid=25961#1',
                                'hammer': True,
                                'score': ['2',
                                 '0',
@@ -108,7 +108,7 @@ linescore_page.boxscores
                                 ''],
                                'finalscore': '7'}),
                   'Jason March': defaultdict(list,
-                              {'href': 'event.php?view=Team&eventid=6400&teamid=144350#1',
+                              {'href': 'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477&eventid=6400&teamid=144350#1',
                                'hammer': False,
                                'score': ['0',
                                 '0',
@@ -123,7 +123,7 @@ linescore_page.boxscores
                                'finalscore': '3'})}),
      defaultdict(list,
                  {'Richard Krell': defaultdict(list,
-                              {'href': 'event.php?view=Team&eventid=6400&teamid=144349&profileid=25962#1',
+                              {'href': 'event.php?view=Team&eventid=6400&teamid=144350&profileid=0&eventid=6400&teamid=144349&profileid=25962#1',
                                'hammer': True,
                                'score': ['2',
                                 '0',
@@ -137,7 +137,7 @@ linescore_page.boxscores
                                 ''],
                                'finalscore': '7'}),
                   'Rob Ainsley': defaultdict(list,
-                              {'href': 'event.php?view=Team&eventid=6400&teamid=144345&profileid=15779#1',
+                              {'href': 'event.php?view=Team&eventid=6400&teamid=144350&profileid=0&eventid=6400&teamid=144345&profileid=15779#1',
                                'hammer': False,
                                'score': ['0',
                                 '0',
@@ -218,28 +218,6 @@ print(linescore_page.event_name,',',linescore_page.event_date,',' ,linescore_pag
 
     Ontario Tankard - Open Qualifier , Jan 17 - 19, 2020 , Draw: 2
     
-
-The boxscore dictionary can be flattened into a list of lists using the `flatten_boxscore` helper function.
-
-```python
-api.flatten_boxscore(boxscore=boxscore)
-```
-
-
-
-
-    [['Wayne Tuck Jr.',
-      'event.php?view=Team&eventid=6400&teamid=144353&profileid=12486#1',
-      True,
-      ['0', '2', '0', '0', '0', '0', '1', '1', '1', '0'],
-      '5'],
-     ['Matthew Hall',
-      'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1',
-      False,
-      ['0', '0', '4', '0', '0', '1', '0', '0', '0', '2'],
-      '7']]
-
-
 
 ## About czapi
 czapi is a Python library for scraping curling linescores.

@@ -6,5 +6,4 @@ __all__ = []
 
 from .core.scraping.base import (
      LinescorePage
-    ,flatten_boxscore
 )
