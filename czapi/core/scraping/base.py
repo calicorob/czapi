@@ -11,7 +11,7 @@ from abc import ABC, abstractproperty, abstractmethod
 from dataclasses import dataclass
 from typing import Optional, List, Any, Tuple
 from collections import defaultdict
-from hashlib import sha256
+from uuid import  uuid4
 
 # Internal Cell
 
@@ -68,23 +68,105 @@ def generate_dict_from_table(
     return d
 
 # Internal Cell
+def normalize_scores(score_1 : List[str],score_2 : List[str])->List[int]:
+    if len(score_1) != len(score_2):
+        raise ValueError('') # TODO
 
-def hash_obj(
+    end_1 = []
+    current_diff = 0
 
-     obj : Any
-    ,hash_type : str = 'sha256'
-    ,encoding : str='utf-8'
-)->str:
-    """Hashes an object according to the passed hash_type and encoding."""
-    hash_type = hash_type.lower()
-    encoding = encoding.lower()
+    for i in range(len(score_1)):
+        try:
+            val_1 = int(score_1[i])
+            val_2 = int(score_2[i])
 
-    if hash_type == 'sha256':
-        hash_func = sha256
-    else:
-        raise NotImplementedError("Hash function %s not supported."%hash_type)
+        except ValueError:
+            break
 
-    return hash_func(str(obj).encode(encoding)).hexdigest().lower()
+        if val_1 > 0 and val_2 > 0:
+            raise ValueError('') # TODO
+
+        new_current_diff = current_diff + val_1 - val_2
+        end_1.append(new_current_diff)
+        current_diff = new_current_diff
+
+    return end_1, list(map(lambda x: -1*x,end_1))
+
+
+
+
+# Internal Cell
+def get_hammer_progressions(hammer_start:bool,normalized_score:List[int])->List[bool]:
+    current_hammer = hammer_start
+    hammer_progression = []
+    for i in range(1,len(normalized_score)):
+        if current_hammer and (normalized_score[i] > normalized_score[i-1]):
+            current_hammer = False
+        if not current_hammer and (normalized_score[i] < normalized_score[i-1]):
+            current_hammer = True
+        hammer_progression.append(current_hammer)
+
+    return hammer_progression, list(map(lambda x: not x, hammer_progression))
+
+# Internal Cell
+
+@dataclass
+class HalfBoxscore:
+    team_name : str
+    href : str
+    hammer : bool
+    score : List[str]
+    finalscore : str
+
+
+@dataclass
+class NormalizedHalfBoxscore(HalfBoxscore):
+    hammer_progression : List[bool]
+    normalized_score : List[int]
+
+# Internal Cell
+
+def generate_half_boxscore_pair(boxscore:defaultdict)->Tuple[NormalizedHalfBoxscore]:
+    half_boxscores = [HalfBoxscore(team_name=team_name,**results) for team_name,results in boxscore.items()]
+
+    normalized_scores = normalize_scores(
+
+         score_1 = half_boxscores[0].score
+        ,score_2 = half_boxscores[1].score
+
+    )
+
+    hammer_progressions = get_hammer_progressions(
+
+         hammer_start = half_boxscores[0].hammer
+        ,normalized_score = normalized_scores[0]
+
+    )
+
+    return NormalizedHalfBoxscore(**half_boxscores[0].__dict__,hammer_progression = hammer_progressions[0],normalized_score = normalized_scores[0]),NormalizedHalfBoxscore(**half_boxscores[1].__dict__,hammer_progression = hammer_progressions[1],normalized_score = normalized_scores[1] )
+
+
+# Internal Cell
+def flatten_boxscore(
+
+    boxscore : defaultdict
+)->List[List[Any]]:
+    return [[team_name,*list(stats.values())] for team_name, stats in boxscore.items()]
+
+# Internal Cell
+
+@dataclass
+class NormalizedBoxscore:
+
+    boxscore: defaultdict
+    guid : int = uuid4().int
+    def __post_init__(self)->None:
+        self.normalized_half_boxscore_pair = generate_half_boxscore_pair(boxscore=self.boxscore)
+
+    @property
+    def flattened_normalized_boxscore(self)->List[List[Any]]:
+        return [list(half_score.__dict__.values())+[self.guid] for half_score in self.normalized_half_boxscore_pair]
+
 
 # Cell
 
@@ -95,6 +177,7 @@ class Page(ABC):
         response = make_request_from(url = self.url)
         self.soup = make_soup_from(response=response)
         self.boxscores = self.generate_boxscores()
+        self.normalized_boxscores = self.generate_normalized_boxscores()
 
     @abstractproperty
     def url(self)->str:
@@ -150,6 +233,9 @@ class LinescorePage(Page):
     def generate_boxscores(self)->List[defaultdict]:
         return [generate_dict_from_table(table=table) for table in self.tables]
 
+    def generate_normalized_boxscores(self)->List[NormalizedBoxscore]:
+        return [NormalizedBoxscore(boxscore=boxscore) for boxscore in self.boxscores]
+
     def get_boxscore_from(self,cz_game_id : int)->defaultdict:
         if cz_game_id <= 0:
             raise ValueError('cz_game_id must be 1 or greater.')
@@ -159,93 +245,14 @@ class LinescorePage(Page):
 
         return self.boxscores[cz_game_id - 1]
 
+    # repeated code but will re-factor later
+    def get_normalized_boxscore_from(self,cz_game_id : int)->NormalizedBoxscore:
+        if cz_game_id <= 0:
+            raise ValueError('cz_game_id must be 1 or greater.')
 
-# Internal Cell
-def normalize_scores(score_1 : List[str],score_2 : List[str])->List[int]:
-    if len(score_1) != len(score_2):
-        raise ValueError('') # TODO
-
-    end_1 = []
-    current_diff = 0
-
-    for i in range(len(score_1)):
-        try:
-            val_1 = int(score_1[i])
-            val_2 = int(score_2[i])
-
-        except ValueError:
-            break
-
-        if val_1 > 0 and val_2 > 0:
+        if cz_game_id > len(self.normalized_boxscores):
             raise ValueError('') # TODO
 
-        new_current_diff = current_diff + val_1 - val_2
-        end_1.append(new_current_diff)
-        current_diff = new_current_diff
-
-    return end_1, list(map(lambda x: -1*x,end_1))
+        return self.normalized_boxscores[cz_game_id - 1]
 
 
-
-
-# Internal Cell
-def get_hammer_progressions(hammer_start:bool,normalized_score:List[int])->List[bool]:
-    current_hammer = hammer_start
-    hammer_progression = []
-    for i in range(1,len(normalized_score)):
-        if current_hammer and (normalized_score[i] > normalized_score[i-1]):
-            current_hammer = False
-        if not current_hammer and (normalized_score[i] < normalized_score[i-1]):
-            current_hammer = True
-        hammer_progression.append(current_hammer)
-
-    return hammer_progression, list(map(lambda x: not x, hammer_progression))
-
-
-
-# Internal Cell
-
-@dataclass
-class HalfBoxscore:
-    team_name : str
-    href : str
-    hammer : bool
-    score : List[str]
-    finalscore : str
-
-
-@dataclass
-class NormalizedHalfBoxscore(HalfBoxscore):
-    hammer_progression : List[bool]
-    normalized_score : List[int]
-
-# Internal Cell
-
-def generate_half_boxscores(boxscore:defaultdict)->Tuple[NormalizedHalfBoxscore]:
-    half_boxscores = [HalfBoxscore(team_name=team_name,**results) for team_name,results in boxscore.items()]
-
-    normalized_scores = normalize_scores(
-
-         score_1 = half_boxscores[0].score
-        ,score_2 = half_boxscores[1].score
-
-    )
-
-    hammer_progressions = get_hammer_progressions(
-
-         hammer_start = half_boxscores[0].hammer
-        ,normalized_score = normalized_scores[0]
-
-    )
-
-    return NormalizedHalfBoxscore(**half_boxscores[0].__dict__,hammer_progression = hammer_progressions[0],normalized_score = normalized_scores[0]),NormalizedHalfBoxscore(**half_boxscores[1].__dict__,hammer_progression = hammer_progressions[1],normalized_score = normalized_scores[1] )
-
-
-# Internal Cell
-
-@dataclass
-class Normalizer:
-    # TODO add some method or something for tracking that two half boxscores were part of the same object
-    boxscore: defaultdict
-    def __post_init__(self)->None:
-        self.normalized_half_boxscores = generate_half_boxscores(boxscore=self.boxscore)
