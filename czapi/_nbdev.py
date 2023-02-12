@@ -10,10 +10,10 @@ index = {"make_request_from": "00_base.ipynb",
          "HalfBoxscore": "00_base.ipynb",
          "NormalizedHalfBoxscore": "00_base.ipynb",
          "generate_half_boxscore_pair": "00_base.ipynb",
-         "flatten_boxscore": "00_base.ipynb",
          "NormalizedBoxscore": "00_base.ipynb",
          "Page": "00_base.ipynb",
-         "LinescorePage": "00_base.ipynb"}
+         "LinescorePage": "00_base.ipynb",
+         "get_all_normalized_flattend_boxscores": "00_base.ipynb"}
 
 modules = ["core/scraping/base.py",
            "api.py"]

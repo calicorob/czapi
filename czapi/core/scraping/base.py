@@ -98,7 +98,7 @@ def normalize_scores(score_1 : List[str],score_2 : List[str])->List[int]:
 # Internal Cell
 def get_hammer_progressions(hammer_start:bool,normalized_score:List[int])->List[bool]:
     current_hammer = hammer_start
-    hammer_progression = []
+    hammer_progression = [hammer_start]
     for i in range(1,len(normalized_score)):
         if current_hammer and (normalized_score[i] > normalized_score[i-1]):
             current_hammer = False
@@ -147,25 +147,20 @@ def generate_half_boxscore_pair(boxscore:defaultdict)->Tuple[NormalizedHalfBoxsc
 
 
 # Internal Cell
-def flatten_boxscore(
-
-    boxscore : defaultdict
-)->List[List[Any]]:
-    return [[team_name,*list(stats.values())] for team_name, stats in boxscore.items()]
-
-# Internal Cell
 
 @dataclass
 class NormalizedBoxscore:
 
     boxscore: defaultdict
-    guid : int = uuid4().int
+
     def __post_init__(self)->None:
         self.normalized_half_boxscore_pair = generate_half_boxscore_pair(boxscore=self.boxscore)
+        self.guid = uuid4().int
+        self.flattened_normalized_boxscore = [list(half_score.__dict__.values())+[self.guid] for half_score in self.normalized_half_boxscore_pair]
 
-    @property
-    def flattened_normalized_boxscore(self)->List[List[Any]]:
-        return [list(half_score.__dict__.values())+[self.guid] for half_score in self.normalized_half_boxscore_pair]
+#     @property
+#     def flattened_normalized_boxscore(self)->List[List[Any]]:
+#         return [list(half_score.__dict__.values())+[self.guid] for half_score in self.normalized_half_boxscore_pair]
 
 
 # Cell
@@ -255,4 +250,9 @@ class LinescorePage(Page):
 
         return self.normalized_boxscores[cz_game_id - 1]
 
+
+# Internal Cell
+def get_all_normalized_flattend_boxscores(linescore_page):
+    flattened_boxscores = [boxscore.flattened_normalized_boxscore for boxscore in linescore_page.normalized_boxscores]
+    return [[row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7]] for f in flattened_boxscores for row in f]
 
