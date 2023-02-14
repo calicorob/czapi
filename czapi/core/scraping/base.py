@@ -158,6 +158,7 @@ class NormalizedBoxscore:
         self.guid = uuid4().int
         self.flattened_normalized_boxscore = [list(half_score.__dict__.values())+[self.guid] for half_score in self.normalized_half_boxscore_pair]
 
+
 #     @property
 #     def flattened_normalized_boxscore(self)->List[List[Any]]:
 #         return [list(half_score.__dict__.values())+[self.guid] for half_score in self.normalized_half_boxscore_pair]
@@ -252,7 +253,6 @@ class LinescorePage(Page):
 
 
 # Internal Cell
-def get_all_normalized_flattend_boxscores(linescore_page):
+def get_flat_boxscores_from(linescore_page:LinescorePage):
     flattened_boxscores = [boxscore.flattened_normalized_boxscore for boxscore in linescore_page.normalized_boxscores]
     return [[row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7]] for f in flattened_boxscores for row in f]
-

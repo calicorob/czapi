@@ -13,7 +13,7 @@ index = {"make_request_from": "00_base.ipynb",
          "NormalizedBoxscore": "00_base.ipynb",
          "Page": "00_base.ipynb",
          "LinescorePage": "00_base.ipynb",
-         "get_all_normalized_flattend_boxscores": "00_base.ipynb"}
+         "get_flat_boxscores_from": "00_base.ipynb"}
 
 modules = ["core/scraping/base.py",
            "api.py"]

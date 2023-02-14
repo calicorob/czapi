@@ -68,9 +68,9 @@ nb_path: "nbs\index.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="General-Information">General Information<a class="anchor-link" href="#General-Information"> </a></h2><p>The czapi is based around the LinescorePage object which represents a linescore page, shown below:</p>
+<h2 id="General-Information">General Information<a class="anchor-link" href="#General-Information"> </a></h2><p>The czapi is based around the <a href="/czapi/base.html#LinescorePage"><code>LinescorePage</code></a> object which represents a linescore page, shown below:</p>
 <p><img src="/czapi/./imgs/game_by_event_draw_game_number.png" alt="Linescore Page"></p>
-<p>Creating an instance of the LinescorePage class gives access to every boxscore on that linescore page.</p>
+<p>Creating an instance of the <a href="/czapi/base.html#LinescorePage"><code>LinescorePage</code></a> class gives access to every boxscore on that linescore page.</p>
 
 </div>
 </div>
@@ -366,6 +366,92 @@ nb_path: "nbs\index.ipynb"
 <pre>Ontario Tankard - Open Qualifier , Jan 17 - 19, 2020 , Draw: 2
 </pre>
 </div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For convenience, upon instantiation of a <a href="/czapi/base.html#LinescorePage"><code>LinescorePage</code></a> object, a <a href="/czapi/base.html#NormalizedBoxscore"><code>NormalizedBoxscore</code></a> instance for each boxscore is created. A <a href="/czapi/base.html#NormalizedBoxscore"><code>NormalizedBoxscore</code></a> holds the same information as a boxscore dictionary with two new pieces of information added:</p>
+<ol>
+<li>The hammer progression for both teams throughout the game, i.e. who had hammer in what end.</li>
+<li>Each team's relative score, i.e. who was up/down X after end Y.</li>
+</ol>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">normalized_boxscore</span> <span class="o">=</span> <span class="n">linescore_page</span><span class="o">.</span><span class="n">get_normalized_boxscore_from</span><span class="p">(</span><span class="n">cz_game_id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">normalized_boxscore</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>NormalizedBoxscore(boxscore=defaultdict(&lt;class &#39;list&#39;&gt;, {&#39;Wayne Tuck Jr.&#39;: defaultdict(&lt;class &#39;list&#39;&gt;, {&#39;href&#39;: &#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144353&amp;profileid=12486#1&#39;, &#39;hammer&#39;: True, &#39;score&#39;: [&#39;0&#39;, &#39;2&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;1&#39;, &#39;1&#39;, &#39;1&#39;, &#39;0&#39;], &#39;finalscore&#39;: &#39;5&#39;}), &#39;Matthew Hall&#39;: defaultdict(&lt;class &#39;list&#39;&gt;, {&#39;href&#39;: &#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144347&amp;profileid=12435#1&#39;, &#39;hammer&#39;: False, &#39;score&#39;: [&#39;0&#39;, &#39;0&#39;, &#39;4&#39;, &#39;0&#39;, &#39;0&#39;, &#39;1&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;2&#39;], &#39;finalscore&#39;: &#39;7&#39;})}))</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="/czapi/base.html#NormalizedBoxscore"><code>NormalizedBoxscore</code></a> objects hold two <a href="/czapi/base.html#NormalizedHalfBoxscore"><code>NormalizedHalfBoxscore</code></a> instances.</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">normalized_boxscore</span><span class="o">.</span><span class="n">normalized_half_boxscore_pair</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(NormalizedHalfBoxscore(team_name=&#39;Wayne Tuck Jr.&#39;, href=&#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144353&amp;profileid=12486#1&#39;, hammer=True, score=[&#39;0&#39;, &#39;2&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;1&#39;, &#39;1&#39;, &#39;1&#39;, &#39;0&#39;], finalscore=&#39;5&#39;, hammer_progression=[True, False, True, True, True, True, False, False, False, True], normalized_score=[0, 2, -2, -2, -2, -3, -2, -1, 0, -2]),
+ NormalizedHalfBoxscore(team_name=&#39;Matthew Hall&#39;, href=&#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144347&amp;profileid=12435#1&#39;, hammer=False, score=[&#39;0&#39;, &#39;0&#39;, &#39;4&#39;, &#39;0&#39;, &#39;0&#39;, &#39;1&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;2&#39;], finalscore=&#39;7&#39;, hammer_progression=[False, True, False, False, False, False, True, True, True, False], normalized_score=[0, -2, 2, 2, 2, 3, 2, 1, 0, 2]))</pre>
+</div>
+
 </div>
 
 </div>
