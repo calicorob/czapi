@@ -235,17 +235,130 @@ normalized_boxscore
 
 
 
-`NormalizedBoxscore` objects hold two `NormalizedHalfBoxscore` instances. 
+A `NormalizedBoxscore` object holds two `NormalizedHalfBoxscore` instances. 
 
 ```python
-normalized_boxscore.normalized_half_boxscore_pair
+normalized_boxscore.normalized_half_boxscore_pair[0]
 ```
 
 
 
 
-    (NormalizedHalfBoxscore(team_name='Wayne Tuck Jr.', href='event.php?view=Team&eventid=6400&teamid=144353&profileid=12486#1', hammer=True, score=['0', '2', '0', '0', '0', '0', '1', '1', '1', '0'], finalscore='5', hammer_progression=[True, False, True, True, True, True, False, False, False, True], normalized_score=[0, 2, -2, -2, -2, -3, -2, -1, 0, -2]),
-     NormalizedHalfBoxscore(team_name='Matthew Hall', href='event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1', hammer=False, score=['0', '0', '4', '0', '0', '1', '0', '0', '0', '2'], finalscore='7', hammer_progression=[False, True, False, False, False, False, True, True, True, False], normalized_score=[0, -2, 2, 2, 2, 3, 2, 1, 0, 2]))
+    NormalizedHalfBoxscore(team_name='Wayne Tuck Jr.', href='event.php?view=Team&eventid=6400&teamid=144353&profileid=12486#1', hammer=True, score=['0', '2', '0', '0', '0', '0', '1', '1', '1', '0'], finalscore='5', hammer_progression=[True, False, True, True, True, True, False, False, False, True], normalized_score=[0, 2, -2, -2, -2, -3, -2, -1, 0, -2])
+
+
+
+For Wayne Tuck Jr. the `hammer_progression` attribute can be interpreted as follows: 
+
+* After end 1: Wayne had hammer
+* After end 2: Wayne didn't have hammer
+* After end 3: Wayne had hammer
+* And so on and so forth..
+
+```python
+normalized_boxscore.normalized_half_boxscore_pair[-1]
+```
+
+
+
+
+    NormalizedHalfBoxscore(team_name='Matthew Hall', href='event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1', hammer=False, score=['0', '0', '4', '0', '0', '1', '0', '0', '0', '2'], finalscore='7', hammer_progression=[False, True, False, False, False, False, True, True, True, False], normalized_score=[0, -2, 2, 2, 2, 3, 2, 1, 0, 2])
+
+
+
+For Matthew Hall, the `normalized_score` attribute can be interpreted as follows:
+
+* After end 1: Matthew was tied.
+* After end 2: Matthew was down 2.
+* After end 3: Matthew was up 2.
+* And so on and so forth..
+
+You'll also notice the `NormalizedBoxscore` object has a guid property which identifies that two `NormalizedHalfBoxscore` belong to the same game.
+
+```python
+normalized_boxscore.guid
+```
+
+
+
+
+    147003164415014657208020002953825569462
+
+
+
+czapi's `get_flat_boxscores_from` function takes a `LinescorePage` as an argument and returns a (flat) nested list object of all the boxscore information on the linescore page. This nested list object can be ingested into a pandas DataFrame or pushed to a SQL database.
+
+```python
+api.get_flat_boxscores_from(linescore_page = linescore_page)
+```
+
+
+
+
+    [['Wayne Tuck Jr.',
+      'event.php?view=Team&eventid=6400&teamid=144353&profileid=12486#1',
+      True,
+      ['0', '2', '0', '0', '0', '0', '1', '1', '1', '0'],
+      '5',
+      [True, False, True, True, True, True, False, False, False, True],
+      [0, 2, -2, -2, -2, -3, -2, -1, 0, -2],
+      147003164415014657208020002953825569462],
+     ['Matthew Hall',
+      'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1',
+      False,
+      ['0', '0', '4', '0', '0', '1', '0', '0', '0', '2'],
+      '7',
+      [False, True, False, False, False, False, True, True, True, False],
+      [0, -2, 2, 2, 2, 3, 2, 1, 0, 2],
+      147003164415014657208020002953825569462],
+     ['Dayna Deruelle',
+      'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435&eventid=6400&teamid=144346&profileid=26636#1',
+      False,
+      ['0', '0', '1', '0', '0', '0', '0', 'X', '', ''],
+      '1',
+      [False, True, False, True, True, True, True],
+      [0, -2, -1, -3, -4, -5, -9],
+      36967671048107339783546455733355689426],
+     ['Tyler Stewart',
+      'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435&eventid=6400&teamid=144352&profileid=12477#1',
+      True,
+      ['0', '2', '0', '2', '1', '1', '4', 'X', '', ''],
+      '10',
+      [True, False, True, False, False, False, False],
+      [0, 2, 1, 3, 4, 5, 9],
+      36967671048107339783546455733355689426],
+     ['Mark Kean',
+      'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477&eventid=6400&teamid=144348&profileid=25961#1',
+      True,
+      ['2', '0', '1', '0', '0', '0', '1', '3', 'X', ''],
+      '7',
+      [True, True, False, False, True, True, False, False],
+      [2, 2, 3, 3, 1, 0, 1, 4],
+      255290136142512439531859386627462583284],
+     ['Jason March',
+      'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477&eventid=6400&teamid=144350#1',
+      False,
+      ['0', '0', '0', '0', '2', '1', '0', '0', 'X', ''],
+      '3',
+      [False, False, True, True, False, False, True, True],
+      [-2, -2, -3, -3, -1, 0, -1, -4],
+      255290136142512439531859386627462583284],
+     ['Richard Krell',
+      'event.php?view=Team&eventid=6400&teamid=144350&profileid=0&eventid=6400&teamid=144349&profileid=25962#1',
+      True,
+      ['2', '0', '1', '0', '2', '1', '1', 'X', '', ''],
+      '7',
+      [True, True, False, True, False, False, False],
+      [2, 2, 3, 2, 4, 5, 6],
+      163493561909482716838197553130549415110],
+     ['Rob Ainsley',
+      'event.php?view=Team&eventid=6400&teamid=144350&profileid=0&eventid=6400&teamid=144345&profileid=15779#1',
+      False,
+      ['0', '0', '0', '1', '0', '0', '0', 'X', '', ''],
+      '1',
+      [False, False, True, False, True, True, True],
+      [-2, -2, -3, -2, -4, -5, -6],
+      163493561909482716838197553130549415110]]
 
 
 

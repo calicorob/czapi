@@ -421,7 +421,7 @@ nb_path: "nbs\index.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="/czapi/base.html#NormalizedBoxscore"><code>NormalizedBoxscore</code></a> objects hold two <a href="/czapi/base.html#NormalizedHalfBoxscore"><code>NormalizedHalfBoxscore</code></a> instances.</p>
+<p>A <a href="/czapi/base.html#NormalizedBoxscore"><code>NormalizedBoxscore</code></a> object holds two <a href="/czapi/base.html#NormalizedHalfBoxscore"><code>NormalizedHalfBoxscore</code></a> instances.</p>
 
 </div>
 </div>
@@ -433,7 +433,7 @@ nb_path: "nbs\index.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">normalized_boxscore</span><span class="o">.</span><span class="n">normalized_half_boxscore_pair</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">normalized_boxscore</span><span class="o">.</span><span class="n">normalized_half_boxscore_pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -448,8 +448,209 @@ nb_path: "nbs\index.ipynb"
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(NormalizedHalfBoxscore(team_name=&#39;Wayne Tuck Jr.&#39;, href=&#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144353&amp;profileid=12486#1&#39;, hammer=True, score=[&#39;0&#39;, &#39;2&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;1&#39;, &#39;1&#39;, &#39;1&#39;, &#39;0&#39;], finalscore=&#39;5&#39;, hammer_progression=[True, False, True, True, True, True, False, False, False, True], normalized_score=[0, 2, -2, -2, -2, -3, -2, -1, 0, -2]),
- NormalizedHalfBoxscore(team_name=&#39;Matthew Hall&#39;, href=&#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144347&amp;profileid=12435#1&#39;, hammer=False, score=[&#39;0&#39;, &#39;0&#39;, &#39;4&#39;, &#39;0&#39;, &#39;0&#39;, &#39;1&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;2&#39;], finalscore=&#39;7&#39;, hammer_progression=[False, True, False, False, False, False, True, True, True, False], normalized_score=[0, -2, 2, 2, 2, 3, 2, 1, 0, 2]))</pre>
+<pre>NormalizedHalfBoxscore(team_name=&#39;Wayne Tuck Jr.&#39;, href=&#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144353&amp;profileid=12486#1&#39;, hammer=True, score=[&#39;0&#39;, &#39;2&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;1&#39;, &#39;1&#39;, &#39;1&#39;, &#39;0&#39;], finalscore=&#39;5&#39;, hammer_progression=[True, False, True, True, True, True, False, False, False, True], normalized_score=[0, 2, -2, -2, -2, -3, -2, -1, 0, -2])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For Wayne Tuck Jr. the <code>hammer_progression</code> attribute can be interpreted as follows:</p>
+<ul>
+<li>After end 1: Wayne had hammer</li>
+<li>After end 2: Wayne didn't have hammer</li>
+<li>After end 3: Wayne had hammer</li>
+<li>And so on and so forth..</li>
+</ul>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">normalized_boxscore</span><span class="o">.</span><span class="n">normalized_half_boxscore_pair</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>NormalizedHalfBoxscore(team_name=&#39;Matthew Hall&#39;, href=&#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144347&amp;profileid=12435#1&#39;, hammer=False, score=[&#39;0&#39;, &#39;0&#39;, &#39;4&#39;, &#39;0&#39;, &#39;0&#39;, &#39;1&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;2&#39;], finalscore=&#39;7&#39;, hammer_progression=[False, True, False, False, False, False, True, True, True, False], normalized_score=[0, -2, 2, 2, 2, 3, 2, 1, 0, 2])</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For Matthew Hall, the <code>normalized_score</code> attribute can be interpreted as follows:</p>
+<ul>
+<li>After end 1: Matthew was tied.</li>
+<li>After end 2: Matthew was down 2.</li>
+<li>After end 3: Matthew was up 2.</li>
+<li>And so on and so forth..</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You'll also notice the <a href="/czapi/base.html#NormalizedBoxscore"><code>NormalizedBoxscore</code></a> object has a guid property which identifies that two <a href="/czapi/base.html#NormalizedHalfBoxscore"><code>NormalizedHalfBoxscore</code></a> belong to the same game.</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">normalized_boxscore</span><span class="o">.</span><span class="n">guid</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>147003164415014657208020002953825569462</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>czapi's <a href="/czapi/base.html#get_flat_boxscores_from"><code>get_flat_boxscores_from</code></a> function takes a <a href="/czapi/base.html#LinescorePage"><code>LinescorePage</code></a> as an argument and returns a (flat) nested list object of all the boxscore information on the linescore page. This nested list object can be ingested into a pandas DataFrame or pushed to a SQL database.</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">api</span><span class="o">.</span><span class="n">get_flat_boxscores_from</span><span class="p">(</span><span class="n">linescore_page</span> <span class="o">=</span> <span class="n">linescore_page</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[[&#39;Wayne Tuck Jr.&#39;,
+  &#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144353&amp;profileid=12486#1&#39;,
+  True,
+  [&#39;0&#39;, &#39;2&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;1&#39;, &#39;1&#39;, &#39;1&#39;, &#39;0&#39;],
+  &#39;5&#39;,
+  [True, False, True, True, True, True, False, False, False, True],
+  [0, 2, -2, -2, -2, -3, -2, -1, 0, -2],
+  147003164415014657208020002953825569462],
+ [&#39;Matthew Hall&#39;,
+  &#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144347&amp;profileid=12435#1&#39;,
+  False,
+  [&#39;0&#39;, &#39;0&#39;, &#39;4&#39;, &#39;0&#39;, &#39;0&#39;, &#39;1&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;2&#39;],
+  &#39;7&#39;,
+  [False, True, False, False, False, False, True, True, True, False],
+  [0, -2, 2, 2, 2, 3, 2, 1, 0, 2],
+  147003164415014657208020002953825569462],
+ [&#39;Dayna Deruelle&#39;,
+  &#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144347&amp;profileid=12435&amp;eventid=6400&amp;teamid=144346&amp;profileid=26636#1&#39;,
+  False,
+  [&#39;0&#39;, &#39;0&#39;, &#39;1&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;X&#39;, &#39;&#39;, &#39;&#39;],
+  &#39;1&#39;,
+  [False, True, False, True, True, True, True],
+  [0, -2, -1, -3, -4, -5, -9],
+  36967671048107339783546455733355689426],
+ [&#39;Tyler Stewart&#39;,
+  &#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144347&amp;profileid=12435&amp;eventid=6400&amp;teamid=144352&amp;profileid=12477#1&#39;,
+  True,
+  [&#39;0&#39;, &#39;2&#39;, &#39;0&#39;, &#39;2&#39;, &#39;1&#39;, &#39;1&#39;, &#39;4&#39;, &#39;X&#39;, &#39;&#39;, &#39;&#39;],
+  &#39;10&#39;,
+  [True, False, True, False, False, False, False],
+  [0, 2, 1, 3, 4, 5, 9],
+  36967671048107339783546455733355689426],
+ [&#39;Mark Kean&#39;,
+  &#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144352&amp;profileid=12477&amp;eventid=6400&amp;teamid=144348&amp;profileid=25961#1&#39;,
+  True,
+  [&#39;2&#39;, &#39;0&#39;, &#39;1&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;1&#39;, &#39;3&#39;, &#39;X&#39;, &#39;&#39;],
+  &#39;7&#39;,
+  [True, True, False, False, True, True, False, False],
+  [2, 2, 3, 3, 1, 0, 1, 4],
+  255290136142512439531859386627462583284],
+ [&#39;Jason March&#39;,
+  &#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144352&amp;profileid=12477&amp;eventid=6400&amp;teamid=144350#1&#39;,
+  False,
+  [&#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;2&#39;, &#39;1&#39;, &#39;0&#39;, &#39;0&#39;, &#39;X&#39;, &#39;&#39;],
+  &#39;3&#39;,
+  [False, False, True, True, False, False, True, True],
+  [-2, -2, -3, -3, -1, 0, -1, -4],
+  255290136142512439531859386627462583284],
+ [&#39;Richard Krell&#39;,
+  &#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144350&amp;profileid=0&amp;eventid=6400&amp;teamid=144349&amp;profileid=25962#1&#39;,
+  True,
+  [&#39;2&#39;, &#39;0&#39;, &#39;1&#39;, &#39;0&#39;, &#39;2&#39;, &#39;1&#39;, &#39;1&#39;, &#39;X&#39;, &#39;&#39;, &#39;&#39;],
+  &#39;7&#39;,
+  [True, True, False, True, False, False, False],
+  [2, 2, 3, 2, 4, 5, 6],
+  163493561909482716838197553130549415110],
+ [&#39;Rob Ainsley&#39;,
+  &#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144350&amp;profileid=0&amp;eventid=6400&amp;teamid=144345&amp;profileid=15779#1&#39;,
+  False,
+  [&#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;1&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;X&#39;, &#39;&#39;, &#39;&#39;],
+  &#39;1&#39;,
+  [False, False, True, False, True, True, True],
+  [-2, -2, -3, -2, -4, -5, -6],
+  163493561909482716838197553130549415110]]</pre>
 </div>
 
 </div>
