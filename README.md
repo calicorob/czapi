@@ -17,7 +17,7 @@ import czapi.api as api
 ## General Information
 The czapi is based around the `LinescorePage` object which represents a linescore page, shown below:
 
-![Linescore Page](nbs\imgs\game_by_event_draw_game_number.png)
+![Linescore Page](nbs/imgs/game_by_event_draw_game_number.png)
 
 Creating an instance of the `LinescorePage` class gives access to every boxscore on that linescore page.
 
@@ -282,7 +282,7 @@ normalized_boxscore.guid
 
 
 
-    147003164415014657208020002953825569462
+    286390568805642354864671583801181164291
 
 
 
@@ -302,7 +302,7 @@ api.get_flat_boxscores_from(linescore_page = linescore_page)
       '5',
       [True, False, True, True, True, True, False, False, False, True],
       [0, 2, -2, -2, -2, -3, -2, -1, 0, -2],
-      147003164415014657208020002953825569462],
+      286390568805642354864671583801181164291],
      ['Matthew Hall',
       'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1',
       False,
@@ -310,7 +310,7 @@ api.get_flat_boxscores_from(linescore_page = linescore_page)
       '7',
       [False, True, False, False, False, False, True, True, True, False],
       [0, -2, 2, 2, 2, 3, 2, 1, 0, 2],
-      147003164415014657208020002953825569462],
+      286390568805642354864671583801181164291],
      ['Dayna Deruelle',
       'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435&eventid=6400&teamid=144346&profileid=26636#1',
       False,
@@ -318,7 +318,7 @@ api.get_flat_boxscores_from(linescore_page = linescore_page)
       '1',
       [False, True, False, True, True, True, True],
       [0, -2, -1, -3, -4, -5, -9],
-      36967671048107339783546455733355689426],
+      241918361990668494119179237991828550551],
      ['Tyler Stewart',
       'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435&eventid=6400&teamid=144352&profileid=12477#1',
       True,
@@ -326,7 +326,7 @@ api.get_flat_boxscores_from(linescore_page = linescore_page)
       '10',
       [True, False, True, False, False, False, False],
       [0, 2, 1, 3, 4, 5, 9],
-      36967671048107339783546455733355689426],
+      241918361990668494119179237991828550551],
      ['Mark Kean',
       'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477&eventid=6400&teamid=144348&profileid=25961#1',
       True,
@@ -334,7 +334,7 @@ api.get_flat_boxscores_from(linescore_page = linescore_page)
       '7',
       [True, True, False, False, True, True, False, False],
       [2, 2, 3, 3, 1, 0, 1, 4],
-      255290136142512439531859386627462583284],
+      104764397036545469956044823134578178817],
      ['Jason March',
       'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477&eventid=6400&teamid=144350#1',
       False,
@@ -342,7 +342,7 @@ api.get_flat_boxscores_from(linescore_page = linescore_page)
       '3',
       [False, False, True, True, False, False, True, True],
       [-2, -2, -3, -3, -1, 0, -1, -4],
-      255290136142512439531859386627462583284],
+      104764397036545469956044823134578178817],
      ['Richard Krell',
       'event.php?view=Team&eventid=6400&teamid=144350&profileid=0&eventid=6400&teamid=144349&profileid=25962#1',
       True,
@@ -350,7 +350,7 @@ api.get_flat_boxscores_from(linescore_page = linescore_page)
       '7',
       [True, True, False, True, False, False, False],
       [2, 2, 3, 2, 4, 5, 6],
-      163493561909482716838197553130549415110],
+      206898467971927875220355632225474643696],
      ['Rob Ainsley',
       'event.php?view=Team&eventid=6400&teamid=144350&profileid=0&eventid=6400&teamid=144345&profileid=15779#1',
       False,
@@ -358,7 +358,7 @@ api.get_flat_boxscores_from(linescore_page = linescore_page)
       '1',
       [False, False, True, False, True, True, True],
       [-2, -2, -3, -2, -4, -5, -6],
-      163493561909482716838197553130549415110]]
+      206898467971927875220355632225474643696]]
 
 
 

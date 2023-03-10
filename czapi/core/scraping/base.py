@@ -12,6 +12,7 @@ from dataclasses import dataclass
 from typing import Optional, List, Any, Tuple
 from collections import defaultdict
 from uuid import  uuid4
+from ..errors import DifferentScoreLengthError,InvalidScoreError
 
 # Internal Cell
 
@@ -69,13 +70,15 @@ def generate_dict_from_table(
 
 # Internal Cell
 def normalize_scores(score_1 : List[str],score_2 : List[str])->List[int]:
-    if len(score_1) != len(score_2):
-        raise ValueError('') # TODO
+    score_1_len = len(score_1)
+    score_2_len = len(score_2)
+    if score_1_len != score_2_len:
+        raise DifferentScoreLengthError(score_1_len =score_1_len,score_2_len = score_2_len)
 
     end_1 = []
     current_diff = 0
 
-    for i in range(len(score_1)):
+    for i in range(score_1_len):
         try:
             val_1 = int(score_1[i])
             val_2 = int(score_2[i])
@@ -84,7 +87,7 @@ def normalize_scores(score_1 : List[str],score_2 : List[str])->List[int]:
             break
 
         if val_1 > 0 and val_2 > 0:
-            raise ValueError('') # TODO
+            raise InvalidScoreError(val_1 = val_1,val_2=val_2)
 
         new_current_diff = current_diff + val_1 - val_2
         end_1.append(new_current_diff)
@@ -169,11 +172,6 @@ class NormalizedBoxscore:
 
 class Page(ABC):
 
-    def __post_init__(self)->None:
-        response = make_request_from(url = self.url)
-        self.soup = make_soup_from(response=response)
-        self.boxscores = self.generate_boxscores()
-        self.normalized_boxscores = self.generate_normalized_boxscores()
 
     @abstractproperty
     def url(self)->str:
@@ -204,6 +202,13 @@ class Page(ABC):
 class LinescorePage(Page):
     cz_event_id : int
     cz_draw_id: int
+
+
+    def __post_init__(self)->None:
+        response = make_request_from(url = self.url)
+        self.soup = make_soup_from(response=response)
+        self.boxscores = self.generate_boxscores()
+        self.normalized_boxscores = self.generate_normalized_boxscores()
 
 
     @property

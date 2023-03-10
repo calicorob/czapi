@@ -2,6 +2,7 @@
   "czapi": {
     "Overview": "/",
     "Base": "base.html",
-    "API": "api.html"
+    "API": "api.html",
+    "Errors": "errors.html"
   }
 }
