@@ -62,7 +62,8 @@ def generate_dict_from_table(
         elif tag.attrs.get('class') == ['linescorehammer']:
             d[team]['hammer'] = not bool(tag.string) # opposite for some reason
         elif tag.attrs.get('class') == ['linescoreend']:
-            d[team]['score'].append(tag.string.strip())
+            score = tag.string.strip()
+            if score: d[team]['score'].append(tag.string.strip()) # eliminates empty strings
         elif tag.attrs.get('class') == ['linescorefinal']:
             d[team]['finalscore'] = tag.b.string.strip()
 
@@ -255,6 +256,45 @@ class LinescorePage(Page):
             raise ValueError('') # TODO
 
         return self.normalized_boxscores[cz_game_id - 1]
+
+
+# Internal Cell
+class BadLinescorePage(Page):
+
+    def url(self)->str:
+        return ''
+
+
+    def event_name(self)->str:
+        return ''
+
+    def event_date(self)->str:
+        return ''
+
+
+    def draw(self)->str:
+        return ''
+
+    def tables(self)->List[Tag]:
+        pass
+
+    def generate_boxscores(self)->List[dict]:
+        return [{
+
+            'Team 1' : {
+                 'href':''
+                ,'hammer':True
+                ,'score':['1','2','3']
+                ,'finalscore':'6'
+            },
+            'Team 2':{
+                 'href':''
+                ,'hammer':True
+                ,'score':['0','X']
+                ,'finalscore':'0'
+            }
+
+        }]
 
 
 # Cell

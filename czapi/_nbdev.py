@@ -13,6 +13,7 @@ index = {"make_request_from": "00_base.ipynb",
          "NormalizedBoxscore": "00_base.ipynb",
          "Page": "00_base.ipynb",
          "LinescorePage": "00_base.ipynb",
+         "BadLinescorePage": "00_base.ipynb",
          "get_flat_boxscores_from": "00_base.ipynb",
          "DifferentScoreLengthError": "02_errors.ipynb",
          "InvalidScoreError": "02_errors.ipynb"}
