@@ -59,6 +59,7 @@ def generate_dict_from_table(
             team = tag.a.string
             d[team] = defaultdict(list)
             d[team]['href'] = tag.a['href']
+            d[team]['score'] # initiate score incase the game hasn't started
         elif tag.attrs.get('class') == ['linescorehammer']:
             d[team]['hammer'] = not bool(tag.string) # opposite for some reason
         elif tag.attrs.get('class') == ['linescoreend']:
