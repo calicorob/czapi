@@ -18,6 +18,9 @@ entries:
     - output: web,pdf
       title: Errors
       url: errors.html
+    - output: web,pdf
+      title: Utils
+      url: utils.html
     output: web
     title: czapi
   output: web

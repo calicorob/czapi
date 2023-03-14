@@ -39,84 +39,38 @@ linescore_page.boxscores
 
 
 
-    [defaultdict(list,
-                 {'Wayne Tuck Jr.': defaultdict(list,
-                              {'href': 'event.php?view=Team&eventid=6400&teamid=144353&profileid=12486#1',
-                               'hammer': True,
-                               'score': ['0',
-                                '2',
-                                '0',
-                                '0',
-                                '0',
-                                '0',
-                                '1',
-                                '1',
-                                '1',
-                                '0'],
-                               'finalscore': '5'}),
-                  'Matthew Hall': defaultdict(list,
-                              {'href': 'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1',
-                               'hammer': False,
-                               'score': ['0',
-                                '0',
-                                '4',
-                                '0',
-                                '0',
-                                '1',
-                                '0',
-                                '0',
-                                '0',
-                                '2'],
-                               'finalscore': '7'})}),
-     defaultdict(list,
-                 {'Dayna Deruelle': defaultdict(list,
-                              {'href': 'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435&eventid=6400&teamid=144346&profileid=26636#1',
-                               'hammer': False,
-                               'score': ['0', '0', '1', '0', '0', '0', '0', 'X'],
-                               'finalscore': '1'}),
-                  'Tyler Stewart': defaultdict(list,
-                              {'href': 'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435&eventid=6400&teamid=144352&profileid=12477#1',
-                               'hammer': True,
-                               'score': ['0', '2', '0', '2', '1', '1', '4', 'X'],
-                               'finalscore': '10'})}),
-     defaultdict(list,
-                 {'Mark Kean': defaultdict(list,
-                              {'href': 'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477&eventid=6400&teamid=144348&profileid=25961#1',
-                               'hammer': True,
-                               'score': ['2',
-                                '0',
-                                '1',
-                                '0',
-                                '0',
-                                '0',
-                                '1',
-                                '3',
-                                'X'],
-                               'finalscore': '7'}),
-                  'Jason March': defaultdict(list,
-                              {'href': 'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477&eventid=6400&teamid=144350#1',
-                               'hammer': False,
-                               'score': ['0',
-                                '0',
-                                '0',
-                                '0',
-                                '2',
-                                '1',
-                                '0',
-                                '0',
-                                'X'],
-                               'finalscore': '3'})}),
-     defaultdict(list,
-                 {'Richard Krell': defaultdict(list,
-                              {'href': 'event.php?view=Team&eventid=6400&teamid=144350&profileid=0&eventid=6400&teamid=144349&profileid=25962#1',
-                               'hammer': True,
-                               'score': ['2', '0', '1', '0', '2', '1', '1', 'X'],
-                               'finalscore': '7'}),
-                  'Rob Ainsley': defaultdict(list,
-                              {'href': 'event.php?view=Team&eventid=6400&teamid=144350&profileid=0&eventid=6400&teamid=144345&profileid=15779#1',
-                               'hammer': False,
-                               'score': ['0', '0', '0', '1', '0', '0', '0', 'X'],
-                               'finalscore': '1'})})]
+    [{'Wayne Tuck Jr.': {'href': 'event.php?view=Team&eventid=6400&teamid=144353&profileid=12486#1',
+       'score': ['0', '2', '0', '0', '0', '0', '1', '1', '1', '0'],
+       'hammer': True,
+       'finalscore': '5'},
+      'Matthew Hall': {'href': 'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1',
+       'score': ['0', '0', '4', '0', '0', '1', '0', '0', '0', '2'],
+       'hammer': False,
+       'finalscore': '7'}},
+     {'Dayna Deruelle': {'href': 'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435&eventid=6400&teamid=144346&profileid=26636#1',
+       'score': ['0', '0', '1', '0', '0', '0', '0', 'X'],
+       'hammer': False,
+       'finalscore': '1'},
+      'Tyler Stewart': {'href': 'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435&eventid=6400&teamid=144352&profileid=12477#1',
+       'score': ['0', '2', '0', '2', '1', '1', '4', 'X'],
+       'hammer': True,
+       'finalscore': '10'}},
+     {'Mark Kean': {'href': 'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477&eventid=6400&teamid=144348&profileid=25961#1',
+       'score': ['2', '0', '1', '0', '0', '0', '1', '3', 'X'],
+       'hammer': True,
+       'finalscore': '7'},
+      'Jason March': {'href': 'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477&eventid=6400&teamid=144350#1',
+       'score': ['0', '0', '0', '0', '2', '1', '0', '0', 'X'],
+       'hammer': False,
+       'finalscore': '3'}},
+     {'Richard Krell': {'href': 'event.php?view=Team&eventid=6400&teamid=144350&profileid=0&eventid=6400&teamid=144349&profileid=25962#1',
+       'score': ['2', '0', '1', '0', '2', '1', '1', 'X'],
+       'hammer': True,
+       'finalscore': '7'},
+      'Rob Ainsley': {'href': 'event.php?view=Team&eventid=6400&teamid=144350&profileid=0&eventid=6400&teamid=144345&profileid=15779#1',
+       'score': ['0', '0', '0', '1', '0', '0', '0', 'X'],
+       'hammer': False,
+       'finalscore': '1'}}]
 
 
 
@@ -139,35 +93,14 @@ boxscore
 
 
 
-    defaultdict(list,
-                {'Wayne Tuck Jr.': defaultdict(list,
-                             {'href': 'event.php?view=Team&eventid=6400&teamid=144353&profileid=12486#1',
-                              'hammer': True,
-                              'score': ['0',
-                               '2',
-                               '0',
-                               '0',
-                               '0',
-                               '0',
-                               '1',
-                               '1',
-                               '1',
-                               '0'],
-                              'finalscore': '5'}),
-                 'Matthew Hall': defaultdict(list,
-                             {'href': 'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1',
-                              'hammer': False,
-                              'score': ['0',
-                               '0',
-                               '4',
-                               '0',
-                               '0',
-                               '1',
-                               '0',
-                               '0',
-                               '0',
-                               '2'],
-                              'finalscore': '7'})})
+    {'Wayne Tuck Jr.': {'href': 'event.php?view=Team&eventid=6400&teamid=144353&profileid=12486#1',
+      'score': ['0', '2', '0', '0', '0', '0', '1', '1', '1', '0'],
+      'hammer': True,
+      'finalscore': '5'},
+     'Matthew Hall': {'href': 'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1',
+      'score': ['0', '0', '4', '0', '0', '1', '0', '0', '0', '2'],
+      'hammer': False,
+      'finalscore': '7'}}
 
 
 
@@ -198,7 +131,7 @@ normalized_boxscore
 
 
 
-    NormalizedBoxscore(boxscore=defaultdict(<class 'list'>, {'Wayne Tuck Jr.': defaultdict(<class 'list'>, {'href': 'event.php?view=Team&eventid=6400&teamid=144353&profileid=12486#1', 'hammer': True, 'score': ['0', '2', '0', '0', '0', '0', '1', '1', '1', '0'], 'finalscore': '5'}), 'Matthew Hall': defaultdict(<class 'list'>, {'href': 'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1', 'hammer': False, 'score': ['0', '0', '4', '0', '0', '1', '0', '0', '0', '2'], 'finalscore': '7'})}))
+    NormalizedBoxscore(boxscore={'Wayne Tuck Jr.': {'href': 'event.php?view=Team&eventid=6400&teamid=144353&profileid=12486#1', 'score': ['0', '2', '0', '0', '0', '0', '1', '1', '1', '0'], 'hammer': True, 'finalscore': '5'}, 'Matthew Hall': {'href': 'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1', 'score': ['0', '0', '4', '0', '0', '1', '0', '0', '0', '2'], 'hammer': False, 'finalscore': '7'}})
 
 
 
@@ -211,7 +144,7 @@ normalized_boxscore.normalized_half_boxscore_pair[0]
 
 
 
-    NormalizedHalfBoxscore(team_name='Wayne Tuck Jr.', href='event.php?view=Team&eventid=6400&teamid=144353&profileid=12486#1', hammer=True, score=['0', '2', '0', '0', '0', '0', '1', '1', '1', '0'], finalscore='5', hammer_progression=[True, False, True, True, True, True, False, False, False, True], normalized_score=[0, 2, -2, -2, -2, -3, -2, -1, 0, -2])
+    NormalizedHalfBoxscore(team_name='Wayne Tuck Jr.', href='event.php?view=Team&eventid=6400&teamid=144353&profileid=12486#1', hammer=True, score=['0', '2', '0', '0', '0', '0', '1', '1', '1', '0'], finalscore='5', hammer_progression=[True, True, False, True, True, True, True, False, False, False], normalized_score=[0, 2, -2, -2, -2, -3, -2, -1, 0, -2])
 
 
 
@@ -229,7 +162,7 @@ normalized_boxscore.normalized_half_boxscore_pair[-1]
 
 
 
-    NormalizedHalfBoxscore(team_name='Matthew Hall', href='event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1', hammer=False, score=['0', '0', '4', '0', '0', '1', '0', '0', '0', '2'], finalscore='7', hammer_progression=[False, True, False, False, False, False, True, True, True, False], normalized_score=[0, -2, 2, 2, 2, 3, 2, 1, 0, 2])
+    NormalizedHalfBoxscore(team_name='Matthew Hall', href='event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1', hammer=False, score=['0', '0', '4', '0', '0', '1', '0', '0', '0', '2'], finalscore='7', hammer_progression=[False, False, True, False, False, False, False, True, True, True], normalized_score=[0, -2, 2, 2, 2, 3, 2, 1, 0, 2])
 
 
 
@@ -249,7 +182,7 @@ normalized_boxscore.guid
 
 
 
-    64730384393780475526149827004054085680
+    194896847780390073816548376471894677654
 
 
 
@@ -267,65 +200,65 @@ api.get_flat_boxscores_from(linescore_page = linescore_page)
       True,
       ['0', '2', '0', '0', '0', '0', '1', '1', '1', '0'],
       '5',
-      [True, False, True, True, True, True, False, False, False, True],
+      [True, True, False, True, True, True, True, False, False, False],
       [0, 2, -2, -2, -2, -3, -2, -1, 0, -2],
-      64730384393780475526149827004054085680],
+      194896847780390073816548376471894677654],
      ['Matthew Hall',
       'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1',
       False,
       ['0', '0', '4', '0', '0', '1', '0', '0', '0', '2'],
       '7',
-      [False, True, False, False, False, False, True, True, True, False],
+      [False, False, True, False, False, False, False, True, True, True],
       [0, -2, 2, 2, 2, 3, 2, 1, 0, 2],
-      64730384393780475526149827004054085680],
+      194896847780390073816548376471894677654],
      ['Dayna Deruelle',
       'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435&eventid=6400&teamid=144346&profileid=26636#1',
       False,
       ['0', '0', '1', '0', '0', '0', '0', 'X'],
       '1',
-      [False, True, False, True, True, True, True],
+      [False, False, True, False, True, True, True],
       [0, -2, -1, -3, -4, -5, -9],
-      75500335560895025960417581608763223393],
+      135540239661177879591858766831808545031],
      ['Tyler Stewart',
       'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435&eventid=6400&teamid=144352&profileid=12477#1',
       True,
       ['0', '2', '0', '2', '1', '1', '4', 'X'],
       '10',
-      [True, False, True, False, False, False, False],
+      [True, True, False, True, False, False, False],
       [0, 2, 1, 3, 4, 5, 9],
-      75500335560895025960417581608763223393],
+      135540239661177879591858766831808545031],
      ['Mark Kean',
       'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477&eventid=6400&teamid=144348&profileid=25961#1',
       True,
       ['2', '0', '1', '0', '0', '0', '1', '3', 'X'],
       '7',
-      [True, True, False, False, True, True, False, False],
+      [True, False, False, False, False, True, True, False],
       [2, 2, 3, 3, 1, 0, 1, 4],
-      17220047150342431879853352856338106525],
+      26669484466407348583261919814942700295],
      ['Jason March',
       'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477&eventid=6400&teamid=144350#1',
       False,
       ['0', '0', '0', '0', '2', '1', '0', '0', 'X'],
       '3',
-      [False, False, True, True, False, False, True, True],
+      [False, True, True, True, True, False, False, True],
       [-2, -2, -3, -3, -1, 0, -1, -4],
-      17220047150342431879853352856338106525],
+      26669484466407348583261919814942700295],
      ['Richard Krell',
       'event.php?view=Team&eventid=6400&teamid=144350&profileid=0&eventid=6400&teamid=144349&profileid=25962#1',
       True,
       ['2', '0', '1', '0', '2', '1', '1', 'X'],
       '7',
-      [True, True, False, True, False, False, False],
+      [True, False, False, False, True, False, False],
       [2, 2, 3, 2, 4, 5, 6],
-      121287577363239613372599594369672773573],
+      195075971835150854244644977713167341550],
      ['Rob Ainsley',
       'event.php?view=Team&eventid=6400&teamid=144350&profileid=0&eventid=6400&teamid=144345&profileid=15779#1',
       False,
       ['0', '0', '0', '1', '0', '0', '0', 'X'],
       '1',
-      [False, False, True, False, True, True, True],
+      [False, True, True, True, False, True, True],
       [-2, -2, -3, -2, -4, -5, -6],
-      121287577363239613372599594369672773573]]
+      195075971835150854244644977713167341550]]
 
 
 

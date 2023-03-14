@@ -4,38 +4,13 @@ __all__ = ['Page', 'LinescorePage', 'get_flat_boxscores_from']
 
 # Cell
 
-import requests
-from requests.models import Response
-from bs4 import BeautifulSoup,Tag
+from bs4 import Tag
 from abc import ABC, abstractproperty, abstractmethod
 from dataclasses import dataclass
 from typing import Optional, List, Any, Tuple
-from collections import defaultdict
 from uuid import  uuid4
 from ..errors import DifferentScoreLengthError,InvalidScoreError
-
-# Internal Cell
-
-def make_request_from(
-
-     *
-    ,url : str
-    ,**kwargs
-
-)->Response:
-    return requests.get(url=url,**kwargs)
-
-
-def make_soup_from(
-
-     *
-    ,response : Response
-    ,**kwargs
-
-)->BeautifulSoup:
-    """ Returns a Beautifulsoup object for the passed URL."""
-
-    return BeautifulSoup(response.content,features='html.parser',**kwargs)
+from ..utils import make_request_from, make_soup_from
 
 # Internal Cell
 
@@ -43,9 +18,9 @@ def generate_dict_from_table(
 
     table : Tag
 
-)->defaultdict:
+)->dict:
     """Helper function for returning the curling boxscore from a bs4 Tag object."""
-    d = defaultdict(list)
+    d = {}
     team = None
 
     # TODO : add error handling for when no table is passed / None
@@ -57,9 +32,9 @@ def generate_dict_from_table(
     for tag in table.find_all('td'):
         if tag.attrs.get('class') == ['linescoreteam']:
             team = tag.a.string
-            d[team] = defaultdict(list)
+            d[team] = {}
             d[team]['href'] = tag.a['href']
-            d[team]['score'] # initiate score incase the game hasn't started
+            d[team]['score'] = list() # initiate score incase the game hasn't started
         elif tag.attrs.get('class') == ['linescorehammer']:
             d[team]['hammer'] = not bool(tag.string) # opposite for some reason
         elif tag.attrs.get('class') == ['linescoreend']:
@@ -137,11 +112,14 @@ class TagLike(TagBase):
         try:
             return getattr(self,key)
         except AttributeError:
-            return AttributeError('This attribute does not exist')
+            return AttributeError('This attribute does not exist.')
 
 
 # Internal Cell
-def normalize_scores(score_1 : List[str],score_2 : List[str])->List[int]:
+def normalize_scores(score_1 : List[str],score_2 : List[str])->Tuple[List[int],List[int]]:
+    """
+        Take two lists representing the end results of a boxscore and return the 'normalized' or relative scores.
+    """
     score_1_len = len(score_1)
     score_2_len = len(score_2)
     if score_1_len != score_2_len:
@@ -167,18 +145,17 @@ def normalize_scores(score_1 : List[str],score_2 : List[str])->List[int]:
 
     return end_1, list(map(lambda x: -1*x,end_1))
 
-
-
-
 # Internal Cell
-def get_hammer_progressions(hammer_start:bool,normalized_score:List[int])->List[bool]:
+def get_hammer_progressions(hammer_start:bool,normalized_score:List[int])->Tuple[List[bool],List[bool]]:
     current_hammer = hammer_start
+    current_score = 0
     hammer_progression = [hammer_start]
-    for i in range(1,len(normalized_score)):
-        if current_hammer and (normalized_score[i] > normalized_score[i-1]):
+    for i in range(len(normalized_score)-1):
+        if current_hammer and (normalized_score[i] > current_score):
             current_hammer = False
-        if not current_hammer and (normalized_score[i] < normalized_score[i-1]):
+        if not current_hammer and (normalized_score[i] < current_score):
             current_hammer = True
+        current_score = normalized_score[i]
         hammer_progression.append(current_hammer)
 
     return hammer_progression, list(map(lambda x: not x, hammer_progression))
@@ -201,7 +178,7 @@ class NormalizedHalfBoxscore(HalfBoxscore):
 
 # Internal Cell
 
-def generate_half_boxscore_pair(boxscore:defaultdict)->Tuple[NormalizedHalfBoxscore]:
+def generate_half_boxscore_pair(boxscore:dict)->Tuple[NormalizedHalfBoxscore]:
     half_boxscores = [HalfBoxscore(team_name=team_name,**results) for team_name,results in boxscore.items()]
 
     normalized_scores = normalize_scores(
@@ -226,7 +203,7 @@ def generate_half_boxscore_pair(boxscore:defaultdict)->Tuple[NormalizedHalfBoxsc
 @dataclass
 class NormalizedBoxscore:
 
-    boxscore: defaultdict
+    boxscore: dict
 
     def __post_init__(self)->None:
         self.normalized_half_boxscore_pair = generate_half_boxscore_pair(boxscore=self.boxscore)
@@ -303,13 +280,13 @@ class LinescorePage(Page):
     def tables(self)->List[Tag]:
         return self.soup.find_all(name = 'table',attrs={'class':'linescorebox'})
 
-    def generate_boxscores(self)->List[defaultdict]:
+    def generate_boxscores(self)->List[dict]:
         return [generate_dict_from_table(table=table) for table in self.tables]
 
     def generate_normalized_boxscores(self)->List[NormalizedBoxscore]:
         return [NormalizedBoxscore(boxscore=boxscore) for boxscore in self.boxscores]
 
-    def get_boxscore_from(self,cz_game_id : int)->defaultdict:
+    def get_boxscore_from(self,cz_game_id : int)->dict:
         if cz_game_id <= 0:
             raise ValueError('cz_game_id must be 1 or greater.')
 

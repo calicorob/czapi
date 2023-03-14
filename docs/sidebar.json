@@ -3,6 +3,7 @@
     "Overview": "/",
     "Base": "base.html",
     "API": "api.html",
-    "Errors": "errors.html"
+    "Errors": "errors.html",
+    "Utils": "utils.html"
   }
 }

@@ -2,9 +2,7 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"make_request_from": "00_base.ipynb",
-         "make_soup_from": "00_base.ipynb",
-         "generate_dict_from_table": "00_base.ipynb",
+index = {"generate_dict_from_table": "00_base.ipynb",
          "TagBase": "00_base.ipynb",
          "TagLike": "00_base.ipynb",
          "normalize_scores": "00_base.ipynb",
@@ -18,11 +16,14 @@ index = {"make_request_from": "00_base.ipynb",
          "BadLinescorePage": "00_base.ipynb",
          "get_flat_boxscores_from": "00_base.ipynb",
          "DifferentScoreLengthError": "02_errors.ipynb",
-         "InvalidScoreError": "02_errors.ipynb"}
+         "InvalidScoreError": "02_errors.ipynb",
+         "make_request_from": "03_utils.ipynb",
+         "make_soup_from": "03_utils.ipynb"}
 
 modules = ["core/scraping/base.py",
            "api.py",
-           "core/errors.py"]
+           "core/errors.py",
+           "core/utils.py"]
 
 doc_url = "https://calicorob.github.io/czapi/"
 
