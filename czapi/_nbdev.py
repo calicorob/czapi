@@ -5,6 +5,8 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 index = {"make_request_from": "00_base.ipynb",
          "make_soup_from": "00_base.ipynb",
          "generate_dict_from_table": "00_base.ipynb",
+         "TagBase": "00_base.ipynb",
+         "TagLike": "00_base.ipynb",
          "normalize_scores": "00_base.ipynb",
          "get_hammer_progressions": "00_base.ipynb",
          "HalfBoxscore": "00_base.ipynb",
