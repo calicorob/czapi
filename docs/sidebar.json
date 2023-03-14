@@ -4,6 +4,7 @@
     "Base": "base.html",
     "API": "api.html",
     "Errors": "errors.html",
-    "Utils": "utils.html"
+    "Utils": "utils.html",
+    "Testing": "testing.html"
   }
 }
