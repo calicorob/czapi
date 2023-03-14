@@ -182,83 +182,83 @@ normalized_boxscore.guid
 
 
 
-    194896847780390073816548376471894677654
+    339388093379462899107906468782921765509
 
 
 
-czapi's `get_flat_boxscores_from` function takes a `LinescorePage` as an argument and returns a (flat) nested list object of all the boxscore information on the linescore page. This nested list object can be ingested into a pandas DataFrame or pushed to a SQL database.
+czapi's `get_flat_boxscores_from` function takes a `cz_event_id` and `cz_draw_id` as an arguments and returns a (flat) nested list object of all the boxscore information on the linescore page. This nested list object can be ingested into a pandas DataFrame or pushed to a SQL database.
 
 ```python
-api.get_flat_boxscores_from(linescore_page = linescore_page)
+api.get_flat_boxscores_from(cz_event_id = 6400, cz_draw_id = 2)
 ```
 
 
 
 
-    [['Wayne Tuck Jr.',
+    [('Wayne Tuck Jr.',
       'event.php?view=Team&eventid=6400&teamid=144353&profileid=12486#1',
       True,
       ['0', '2', '0', '0', '0', '0', '1', '1', '1', '0'],
       '5',
       [True, True, False, True, True, True, True, False, False, False],
       [0, 2, -2, -2, -2, -3, -2, -1, 0, -2],
-      194896847780390073816548376471894677654],
-     ['Matthew Hall',
+      191425043340543061771370311567383895563),
+     ('Matthew Hall',
       'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1',
       False,
       ['0', '0', '4', '0', '0', '1', '0', '0', '0', '2'],
       '7',
       [False, False, True, False, False, False, False, True, True, True],
       [0, -2, 2, 2, 2, 3, 2, 1, 0, 2],
-      194896847780390073816548376471894677654],
-     ['Dayna Deruelle',
+      191425043340543061771370311567383895563),
+     ('Dayna Deruelle',
       'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435&eventid=6400&teamid=144346&profileid=26636#1',
       False,
       ['0', '0', '1', '0', '0', '0', '0', 'X'],
       '1',
       [False, False, True, False, True, True, True],
       [0, -2, -1, -3, -4, -5, -9],
-      135540239661177879591858766831808545031],
-     ['Tyler Stewart',
+      29260711103769563256263955188339856731),
+     ('Tyler Stewart',
       'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435&eventid=6400&teamid=144352&profileid=12477#1',
       True,
       ['0', '2', '0', '2', '1', '1', '4', 'X'],
       '10',
       [True, True, False, True, False, False, False],
       [0, 2, 1, 3, 4, 5, 9],
-      135540239661177879591858766831808545031],
-     ['Mark Kean',
+      29260711103769563256263955188339856731),
+     ('Mark Kean',
       'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477&eventid=6400&teamid=144348&profileid=25961#1',
       True,
       ['2', '0', '1', '0', '0', '0', '1', '3', 'X'],
       '7',
       [True, False, False, False, False, True, True, False],
       [2, 2, 3, 3, 1, 0, 1, 4],
-      26669484466407348583261919814942700295],
-     ['Jason March',
+      279492617591797597688645132513786428716),
+     ('Jason March',
       'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477&eventid=6400&teamid=144350#1',
       False,
       ['0', '0', '0', '0', '2', '1', '0', '0', 'X'],
       '3',
       [False, True, True, True, True, False, False, True],
       [-2, -2, -3, -3, -1, 0, -1, -4],
-      26669484466407348583261919814942700295],
-     ['Richard Krell',
+      279492617591797597688645132513786428716),
+     ('Richard Krell',
       'event.php?view=Team&eventid=6400&teamid=144350&profileid=0&eventid=6400&teamid=144349&profileid=25962#1',
       True,
       ['2', '0', '1', '0', '2', '1', '1', 'X'],
       '7',
       [True, False, False, False, True, False, False],
       [2, 2, 3, 2, 4, 5, 6],
-      195075971835150854244644977713167341550],
-     ['Rob Ainsley',
+      229027424560562344342140701652233113399),
+     ('Rob Ainsley',
       'event.php?view=Team&eventid=6400&teamid=144350&profileid=0&eventid=6400&teamid=144345&profileid=15779#1',
       False,
       ['0', '0', '0', '1', '0', '0', '0', 'X'],
       '1',
       [False, True, True, True, False, True, True],
       [-2, -2, -3, -2, -4, -5, -6],
-      195075971835150854244644977713167341550]]
+      229027424560562344342140701652233113399)]
 
 
 

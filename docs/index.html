@@ -452,7 +452,7 @@ nb_path: "nbs/index.ipynb"
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>194896847780390073816548376471894677654</pre>
+<pre>339388093379462899107906468782921765509</pre>
 </div>
 
 </div>
@@ -465,7 +465,7 @@ nb_path: "nbs/index.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>czapi's <a href="/czapi/base.html#get_flat_boxscores_from"><code>get_flat_boxscores_from</code></a> function takes a <a href="/czapi/base.html#LinescorePage"><code>LinescorePage</code></a> as an argument and returns a (flat) nested list object of all the boxscore information on the linescore page. This nested list object can be ingested into a pandas DataFrame or pushed to a SQL database.</p>
+<p>czapi's <a href="/czapi/base.html#get_flat_boxscores_from"><code>get_flat_boxscores_from</code></a> function takes a <code>cz_event_id</code> and <code>cz_draw_id</code> as an arguments and returns a (flat) nested list object of all the boxscore information on the linescore page. This nested list object can be ingested into a pandas DataFrame or pushed to a SQL database.</p>
 
 </div>
 </div>
@@ -477,7 +477,7 @@ nb_path: "nbs/index.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">api</span><span class="o">.</span><span class="n">get_flat_boxscores_from</span><span class="p">(</span><span class="n">linescore_page</span> <span class="o">=</span> <span class="n">linescore_page</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">api</span><span class="o">.</span><span class="n">get_flat_boxscores_from</span><span class="p">(</span><span class="n">cz_event_id</span> <span class="o">=</span> <span class="mi">6400</span><span class="p">,</span> <span class="n">cz_draw_id</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -492,70 +492,70 @@ nb_path: "nbs/index.ipynb"
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[[&#39;Wayne Tuck Jr.&#39;,
+<pre>[(&#39;Wayne Tuck Jr.&#39;,
   &#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144353&amp;profileid=12486#1&#39;,
   True,
   [&#39;0&#39;, &#39;2&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;1&#39;, &#39;1&#39;, &#39;1&#39;, &#39;0&#39;],
   &#39;5&#39;,
   [True, True, False, True, True, True, True, False, False, False],
   [0, 2, -2, -2, -2, -3, -2, -1, 0, -2],
-  194896847780390073816548376471894677654],
- [&#39;Matthew Hall&#39;,
+  191425043340543061771370311567383895563),
+ (&#39;Matthew Hall&#39;,
   &#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144347&amp;profileid=12435#1&#39;,
   False,
   [&#39;0&#39;, &#39;0&#39;, &#39;4&#39;, &#39;0&#39;, &#39;0&#39;, &#39;1&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;2&#39;],
   &#39;7&#39;,
   [False, False, True, False, False, False, False, True, True, True],
   [0, -2, 2, 2, 2, 3, 2, 1, 0, 2],
-  194896847780390073816548376471894677654],
- [&#39;Dayna Deruelle&#39;,
+  191425043340543061771370311567383895563),
+ (&#39;Dayna Deruelle&#39;,
   &#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144347&amp;profileid=12435&amp;eventid=6400&amp;teamid=144346&amp;profileid=26636#1&#39;,
   False,
   [&#39;0&#39;, &#39;0&#39;, &#39;1&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;X&#39;],
   &#39;1&#39;,
   [False, False, True, False, True, True, True],
   [0, -2, -1, -3, -4, -5, -9],
-  135540239661177879591858766831808545031],
- [&#39;Tyler Stewart&#39;,
+  29260711103769563256263955188339856731),
+ (&#39;Tyler Stewart&#39;,
   &#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144347&amp;profileid=12435&amp;eventid=6400&amp;teamid=144352&amp;profileid=12477#1&#39;,
   True,
   [&#39;0&#39;, &#39;2&#39;, &#39;0&#39;, &#39;2&#39;, &#39;1&#39;, &#39;1&#39;, &#39;4&#39;, &#39;X&#39;],
   &#39;10&#39;,
   [True, True, False, True, False, False, False],
   [0, 2, 1, 3, 4, 5, 9],
-  135540239661177879591858766831808545031],
- [&#39;Mark Kean&#39;,
+  29260711103769563256263955188339856731),
+ (&#39;Mark Kean&#39;,
   &#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144352&amp;profileid=12477&amp;eventid=6400&amp;teamid=144348&amp;profileid=25961#1&#39;,
   True,
   [&#39;2&#39;, &#39;0&#39;, &#39;1&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;1&#39;, &#39;3&#39;, &#39;X&#39;],
   &#39;7&#39;,
   [True, False, False, False, False, True, True, False],
   [2, 2, 3, 3, 1, 0, 1, 4],
-  26669484466407348583261919814942700295],
- [&#39;Jason March&#39;,
+  279492617591797597688645132513786428716),
+ (&#39;Jason March&#39;,
   &#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144352&amp;profileid=12477&amp;eventid=6400&amp;teamid=144350#1&#39;,
   False,
   [&#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;2&#39;, &#39;1&#39;, &#39;0&#39;, &#39;0&#39;, &#39;X&#39;],
   &#39;3&#39;,
   [False, True, True, True, True, False, False, True],
   [-2, -2, -3, -3, -1, 0, -1, -4],
-  26669484466407348583261919814942700295],
- [&#39;Richard Krell&#39;,
+  279492617591797597688645132513786428716),
+ (&#39;Richard Krell&#39;,
   &#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144350&amp;profileid=0&amp;eventid=6400&amp;teamid=144349&amp;profileid=25962#1&#39;,
   True,
   [&#39;2&#39;, &#39;0&#39;, &#39;1&#39;, &#39;0&#39;, &#39;2&#39;, &#39;1&#39;, &#39;1&#39;, &#39;X&#39;],
   &#39;7&#39;,
   [True, False, False, False, True, False, False],
   [2, 2, 3, 2, 4, 5, 6],
-  195075971835150854244644977713167341550],
- [&#39;Rob Ainsley&#39;,
+  229027424560562344342140701652233113399),
+ (&#39;Rob Ainsley&#39;,
   &#39;event.php?view=Team&amp;eventid=6400&amp;teamid=144350&amp;profileid=0&amp;eventid=6400&amp;teamid=144345&amp;profileid=15779#1&#39;,
   False,
   [&#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;1&#39;, &#39;0&#39;, &#39;0&#39;, &#39;0&#39;, &#39;X&#39;],
   &#39;1&#39;,
   [False, True, True, True, False, True, True],
   [-2, -2, -3, -2, -4, -5, -6],
-  195075971835150854244644977713167341550]]</pre>
+  229027424560562344342140701652233113399)]</pre>
 </div>
 
 </div>
