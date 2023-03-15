@@ -13,9 +13,10 @@ class DifferentScoreLengthError(Exception):
         super().__init__(self.message)
 
 class InvalidScoreError(Exception):
-    def __init__(self,val_1:int,val_2:int)->None:
+    def __init__(self,idx:int,val_1:int,val_2:int)->None:
 
+        self.idx = idx
         self.val_1 = val_1
         self.val_2 = val_2
-        self.message = "Input end scores of %s and %s are both greater than 0 and the end score is not valid."%(self.val_1,self.val_2)
+        self.message = "Input end scores of %s and %s for end %s are both greater than 0 and the end score is not valid."%(self.val_1,self.val_2,self.idx)
         super().__init__(self.message)

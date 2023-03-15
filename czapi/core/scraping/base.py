@@ -68,7 +68,7 @@ def normalize_scores(score_1 : List[str],score_2 : List[str])->Tuple[List[int],L
             break
 
         if val_1 > 0 and val_2 > 0:
-            raise InvalidScoreError(val_1 = val_1,val_2=val_2)
+            raise InvalidScoreError(idx = i+1, val_1 = val_1,val_2=val_2)
 
         new_current_diff = current_diff + val_1 - val_2
         end_1.append(new_current_diff)
@@ -244,6 +244,23 @@ class LinescorePage(Page):
 # Internal Cell
 class BadLinescorePage(Page):
 
+    def __init__(self
+                 ,url:str=None
+                 ,event_name:str=None
+                 ,event_date:str=None
+                 ,draw:str=None
+                 ,tables:List[TagLike]=None
+                 ,boxscores:List[dict]=None
+                 ,normalized_boxscores:List[NormalizedBoxscore]=None
+                ):
+        self.url = url
+        self.event_name = event_name
+        self.event_date = event_date
+        self.draw = draw
+        self.tables = tables
+        self.boxscores = boxscores
+        self.normalized_boxscores = normalized_boxscores
+
     def url(self)->str:
         return ''
 
@@ -262,22 +279,7 @@ class BadLinescorePage(Page):
         pass
 
     def generate_boxscores(self)->List[dict]:
-        return [{
-
-            'Team 1' : {
-                 'href':''
-                ,'hammer':True
-                ,'score':['1','2','3']
-                ,'finalscore':'6'
-            },
-            'Team 2':{
-                 'href':''
-                ,'hammer':True
-                ,'score':['0','X']
-                ,'finalscore':'0'
-            }
-
-        }]
+        return self.boxscores
 
 
 # Internal Cell
