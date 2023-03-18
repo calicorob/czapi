@@ -117,7 +117,7 @@ print(linescore_page.event_name,',',linescore_page.event_date,',' ,linescore_pag
 ```
 
     Ontario Tankard - Open Qualifier , Jan 17 - 19, 2020 , Draw: 2
-    
+
 
 For convenience, upon instantiation of a `LinescorePage` object, a `NormalizedBoxscore` instance for each boxscore is created. A `NormalizedBoxscore` holds the same information as a boxscore dictionary with two new pieces of information added: 
 1. The hammer progression for both teams throughout the game, i.e. who had hammer in what end.
@@ -182,7 +182,7 @@ normalized_boxscore.guid
 
 
 
-    225506166534996288077149236946705268121
+    252991931913848772072809345195834379891
 
 
 
@@ -202,7 +202,7 @@ api.get_flat_boxscores_from(cz_event_id = 6400, cz_draw_id = 2)
       '5',
       [True, True, False, True, True, True, True, False, False, False],
       [0, 2, -2, -2, -2, -3, -2, -1, 0, -2],
-      14936125234502229888453083682962101568),
+      299564467119177178972065881924464288266),
      ('Matthew Hall',
       'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1',
       False,
@@ -210,7 +210,7 @@ api.get_flat_boxscores_from(cz_event_id = 6400, cz_draw_id = 2)
       '7',
       [False, False, True, False, False, False, False, True, True, True],
       [0, -2, 2, 2, 2, 3, 2, 1, 0, 2],
-      14936125234502229888453083682962101568),
+      299564467119177178972065881924464288266),
      ('Dayna Deruelle',
       'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435&eventid=6400&teamid=144346&profileid=26636#1',
       False,
@@ -218,7 +218,7 @@ api.get_flat_boxscores_from(cz_event_id = 6400, cz_draw_id = 2)
       '1',
       [False, False, True, False, True, True, True],
       [0, -2, -1, -3, -4, -5, -9],
-      314831535501013077495016133774854478114),
+      225166236441736262293031002646839082584),
      ('Tyler Stewart',
       'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435&eventid=6400&teamid=144352&profileid=12477#1',
       True,
@@ -226,7 +226,7 @@ api.get_flat_boxscores_from(cz_event_id = 6400, cz_draw_id = 2)
       '10',
       [True, True, False, True, False, False, False],
       [0, 2, 1, 3, 4, 5, 9],
-      314831535501013077495016133774854478114),
+      225166236441736262293031002646839082584),
      ('Mark Kean',
       'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477&eventid=6400&teamid=144348&profileid=25961#1',
       True,
@@ -234,7 +234,7 @@ api.get_flat_boxscores_from(cz_event_id = 6400, cz_draw_id = 2)
       '7',
       [True, False, False, False, False, True, True, False],
       [2, 2, 3, 3, 1, 0, 1, 4],
-      291985759914212124809719907567598156450),
+      268926374079317223867984892115735644609),
      ('Jason March',
       'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477&eventid=6400&teamid=144350#1',
       False,
@@ -242,7 +242,7 @@ api.get_flat_boxscores_from(cz_event_id = 6400, cz_draw_id = 2)
       '3',
       [False, True, True, True, True, False, False, True],
       [-2, -2, -3, -3, -1, 0, -1, -4],
-      291985759914212124809719907567598156450),
+      268926374079317223867984892115735644609),
      ('Richard Krell',
       'event.php?view=Team&eventid=6400&teamid=144350&profileid=0&eventid=6400&teamid=144349&profileid=25962#1',
       True,
@@ -250,7 +250,7 @@ api.get_flat_boxscores_from(cz_event_id = 6400, cz_draw_id = 2)
       '7',
       [True, False, False, False, True, False, False],
       [2, 2, 3, 2, 4, 5, 6],
-      283811681934319259369935472319838022655),
+      127589252033958326010669452541180740950),
      ('Rob Ainsley',
       'event.php?view=Team&eventid=6400&teamid=144350&profileid=0&eventid=6400&teamid=144345&profileid=15779#1',
       False,
@@ -258,7 +258,7 @@ api.get_flat_boxscores_from(cz_event_id = 6400, cz_draw_id = 2)
       '1',
       [False, True, True, True, False, True, True],
       [-2, -2, -3, -2, -4, -5, -6],
-      283811681934319259369935472319838022655)]
+      127589252033958326010669452541180740950)]
 
 
 
@@ -269,14 +269,23 @@ The `Event` object is a data structure which holds all of the `LinescorePage` ob
 An `Event` instance is created by passing a `cz_event_id`.
 
 ```python
-event = api.Event(cz_event_id = 6400)
+event = api.Event(cz_event_id = 6400,delay=5,verbose=True)
 event
 ```
 
+    Scraping draw 1.
+    Scraping draw 2.
+    Scraping draw 3.
+    Scraping draw 4.
+    Scraping draw 5.
+    Scraping draw 6.
+    Scraping draw 7.
 
 
 
-    Event(cz_event_id=6400)
+
+
+    Event(cz_event_id=6400, delay=5, verbose=True)
 
 
 
@@ -378,7 +387,7 @@ event.get_flat_boxscores()
        '0',
        [True, True, True, True],
        [-1, -4, -6, -8],
-       37776744941265228993425249496970051320),
+       92557652136658576678412699092377882692),
       ('Matthew Hall',
        'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1',
        False,
@@ -386,7 +395,7 @@ event.get_flat_boxscores()
        '8',
        [False, False, False, False],
        [1, 4, 6, 8],
-       37776744941265228993425249496970051320),
+       92557652136658576678412699092377882692),
       ('Matthew Mepstead',
        'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435&eventid=6400&teamid=144356#1',
        False,
@@ -394,7 +403,7 @@ event.get_flat_boxscores()
        '4',
        [False, False, True, False, False, True, False, False, False, True, False],
        [0, -2, -1, 0, -1, 0, 0, 0, -1, 0, -1],
-       286529429695487779435223046621329858130),
+       74505835530428901598709612439134825027),
       ('Tyler Stewart',
        'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435&eventid=6400&teamid=144352&profileid=12477#1',
        True,
@@ -402,7 +411,7 @@ event.get_flat_boxscores()
        '5',
        [True, True, False, True, True, False, True, True, True, False, True],
        [0, 2, 1, 0, 1, 0, 0, 0, 1, 0, 1],
-       286529429695487779435223046621329858130),
+       74505835530428901598709612439134825027),
       ('Jason March',
        'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477&eventid=6400&teamid=144350#1',
        False,
@@ -410,7 +419,7 @@ event.get_flat_boxscores()
        '9',
        [False, False, False, False, False, True, False, False, True],
        [0, 2, 2, 3, 2, 4, 6, 3, 5],
-       57484576680602495735252151395332182997),
+       42581081463875970061015035008045933248),
       ('Sam Steep',
        'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477&eventid=6400&teamid=144351&profileid=25978#1',
        True,
@@ -418,7 +427,7 @@ event.get_flat_boxscores()
        '4',
        [True, True, True, True, True, False, True, True, False],
        [0, -2, -2, -3, -2, -4, -6, -3, -5],
-       57484576680602495735252151395332182997)],
+       42581081463875970061015035008045933248)],
      [('Wayne Tuck Jr.',
        'event.php?view=Team&eventid=6400&teamid=144353&profileid=12486#1',
        True,
@@ -426,7 +435,7 @@ event.get_flat_boxscores()
        '5',
        [True, True, False, True, True, True, True, False, False, False],
        [0, 2, -2, -2, -2, -3, -2, -1, 0, -2],
-       223813289475907483335353950739301063542),
+       67107954024391153327206922837074465185),
       ('Matthew Hall',
        'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1',
        False,
@@ -434,7 +443,7 @@ event.get_flat_boxscores()
        '7',
        [False, False, True, False, False, False, False, True, True, True],
        [0, -2, 2, 2, 2, 3, 2, 1, 0, 2],
-       223813289475907483335353950739301063542),
+       67107954024391153327206922837074465185),
       ('Dayna Deruelle',
        'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435&eventid=6400&teamid=144346&profileid=26636#1',
        False,
@@ -442,7 +451,7 @@ event.get_flat_boxscores()
        '1',
        [False, False, True, False, True, True, True],
        [0, -2, -1, -3, -4, -5, -9],
-       253009827521574988473304402730122525000),
+       174790955766132023378787171289976973883),
       ('Tyler Stewart',
        'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435&eventid=6400&teamid=144352&profileid=12477#1',
        True,
@@ -450,7 +459,7 @@ event.get_flat_boxscores()
        '10',
        [True, True, False, True, False, False, False],
        [0, 2, 1, 3, 4, 5, 9],
-       253009827521574988473304402730122525000),
+       174790955766132023378787171289976973883),
       ('Mark Kean',
        'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477&eventid=6400&teamid=144348&profileid=25961#1',
        True,
@@ -458,7 +467,7 @@ event.get_flat_boxscores()
        '7',
        [True, False, False, False, False, True, True, False],
        [2, 2, 3, 3, 1, 0, 1, 4],
-       174248327692710867562360510962543195302),
+       272159760578274287088902305331625102314),
       ('Jason March',
        'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477&eventid=6400&teamid=144350#1',
        False,
@@ -466,7 +475,7 @@ event.get_flat_boxscores()
        '3',
        [False, True, True, True, True, False, False, True],
        [-2, -2, -3, -3, -1, 0, -1, -4],
-       174248327692710867562360510962543195302),
+       272159760578274287088902305331625102314),
       ('Richard Krell',
        'event.php?view=Team&eventid=6400&teamid=144350&profileid=0&eventid=6400&teamid=144349&profileid=25962#1',
        True,
@@ -474,7 +483,7 @@ event.get_flat_boxscores()
        '7',
        [True, False, False, False, True, False, False],
        [2, 2, 3, 2, 4, 5, 6],
-       179266901714880551374390322522320955261),
+       243919144346090251121838190768057531471),
       ('Rob Ainsley',
        'event.php?view=Team&eventid=6400&teamid=144350&profileid=0&eventid=6400&teamid=144345&profileid=15779#1',
        False,
@@ -482,7 +491,7 @@ event.get_flat_boxscores()
        '1',
        [False, True, True, True, False, True, True],
        [-2, -2, -3, -2, -4, -5, -6],
-       179266901714880551374390322522320955261)],
+       243919144346090251121838190768057531471)],
      [('Matthew Hall',
        'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1',
        True,
@@ -490,7 +499,7 @@ event.get_flat_boxscores()
        '8',
        [True, True, True, False, False, False, False, True],
        [0, -1, 1, 2, 4, 5, 3, 5],
-       266836198055908344943677232661132109171),
+       335406458745785025688024582237718303771),
       ('Tyler Stewart',
        'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477#1',
        False,
@@ -498,7 +507,7 @@ event.get_flat_boxscores()
        '3',
        [False, False, False, True, True, True, True, False],
        [0, 1, -1, -2, -4, -5, -3, -5],
-       266836198055908344943677232661132109171),
+       335406458745785025688024582237718303771),
       ('Mark Kean',
        'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477&eventid=6400&teamid=144348&profileid=25961#1',
        True,
@@ -506,7 +515,7 @@ event.get_flat_boxscores()
        '8',
        [True, True, False, True, False, False],
        [-1, 4, 3, 4, 5, 6],
-       76409399085890036859940619133263985394),
+       3357439244714183352725794717881628513),
       ('Richard Krell',
        'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477&eventid=6400&teamid=144349&profileid=25962#1',
        False,
@@ -514,7 +523,7 @@ event.get_flat_boxscores()
        '2',
        [False, False, True, False, True, True],
        [1, -4, -3, -4, -5, -6],
-       76409399085890036859940619133263985394),
+       3357439244714183352725794717881628513),
       ('Damien Villard',
        'event.php?view=Team&eventid=6400&teamid=144349&profileid=25962&eventid=6400&teamid=144354&profileid=27373#1',
        True,
@@ -522,7 +531,7 @@ event.get_flat_boxscores()
        '5',
        [True, False, False, True, False, True, True, False, True, True],
        [2, 3, 2, 3, 1, 1, 2, 1, 0, -1],
-       95737221041349721383094883999951800959),
+       210455801410133174375994499476912196801),
       ('Sam Steep',
        'event.php?view=Team&eventid=6400&teamid=144349&profileid=25962&eventid=6400&teamid=144351&profileid=25978#1',
        False,
@@ -530,7 +539,7 @@ event.get_flat_boxscores()
        '6',
        [False, True, True, False, True, False, False, True, False, False],
        [-2, -3, -2, -3, -1, -1, -2, -1, 0, 1],
-       95737221041349721383094883999951800959),
+       210455801410133174375994499476912196801),
       ('Jason March',
        'event.php?view=Team&eventid=6400&teamid=144351&profileid=25978&eventid=6400&teamid=144350#1',
        True,
@@ -538,7 +547,7 @@ event.get_flat_boxscores()
        '7',
        [True, False, False, True, True, True, True, False, False],
        [1, 2, 1, 0, 0, 0, 2, 3, 5],
-       270266828626733165434047820390308175425),
+       243087565248420153757039504090677676604),
       ('Matthew Mepstead',
        'event.php?view=Team&eventid=6400&teamid=144351&profileid=25978&eventid=6400&teamid=144356#1',
        False,
@@ -546,7 +555,7 @@ event.get_flat_boxscores()
        '2',
        [False, True, True, False, False, False, False, True, True],
        [-1, -2, -1, 0, 0, 0, -2, -3, -5],
-       270266828626733165434047820390308175425),
+       243087565248420153757039504090677676604),
       ('Wayne Tuck Jr.',
        'event.php?view=Team&eventid=6400&teamid=144356&profileid=0&eventid=6400&teamid=144353&profileid=12486#1',
        False,
@@ -554,7 +563,7 @@ event.get_flat_boxscores()
        '2',
        [False, True, True, True, False, True, True, True],
        [-2, -3, -3, -1, -2, -4, -5, -6],
-       311043710193814978616291598227661209284),
+       137931898261054906956754355272618841462),
       ('Rob Ainsley',
        'event.php?view=Team&eventid=6400&teamid=144356&profileid=0&eventid=6400&teamid=144345&profileid=15779#1',
        True,
@@ -562,7 +571,7 @@ event.get_flat_boxscores()
        '8',
        [True, False, False, False, True, False, False, False],
        [2, 3, 3, 1, 2, 4, 5, 6],
-       311043710193814978616291598227661209284)],
+       137931898261054906956754355272618841462)],
      [('Matthew Hall',
        'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1',
        True,
@@ -570,7 +579,7 @@ event.get_flat_boxscores()
        '6',
        [True, False, True, False, True, False, True, False, True, False],
        [1, -1, 0, -2, -1, -2, 0, -1, 0, -1],
-       294262419456094568463302943982513430114),
+       317958622457967356642328117515298869332),
       ('Mark Kean',
        'event.php?view=Team&eventid=6400&teamid=144348&profileid=25961#1',
        False,
@@ -578,7 +587,7 @@ event.get_flat_boxscores()
        '7',
        [False, True, False, True, False, True, False, True, False, True],
        [-1, 1, 0, 2, 1, 2, 0, 1, 0, 1],
-       294262419456094568463302943982513430114),
+       317958622457967356642328117515298869332),
       ('Sam Steep',
        'event.php?view=Team&eventid=6400&teamid=144348&profileid=25961&eventid=6400&teamid=144351&profileid=25978#1',
        False,
@@ -586,7 +595,7 @@ event.get_flat_boxscores()
        '7',
        [False, False, True, True, False, True, False, False, True, False],
        [1, 0, -2, 0, -2, -1, 0, -1, 0, 1],
-       33453354124073265619901644399476268719),
+       51799212557424957269051274857957470538),
       ('Jason March',
        'event.php?view=Team&eventid=6400&teamid=144348&profileid=25961&eventid=6400&teamid=144350#1',
        True,
@@ -594,7 +603,7 @@ event.get_flat_boxscores()
        '6',
        [True, True, False, False, True, False, True, True, False, True],
        [-1, 0, 2, 0, 2, 1, 0, 1, 0, -1],
-       33453354124073265619901644399476268719),
+       51799212557424957269051274857957470538),
       ('Dayna Deruelle',
        'event.php?view=Team&eventid=6400&teamid=144350&profileid=0&eventid=6400&teamid=144346&profileid=26636#1',
        False,
@@ -602,7 +611,7 @@ event.get_flat_boxscores()
        '8',
        [False, True, False, False, False, False, True],
        [-1, 1, 2, 3, 4, 3, 6],
-       56808124465928392601326057569822338797),
+       194657289779722731927805558345645496540),
       ('Rob Ainsley',
        'event.php?view=Team&eventid=6400&teamid=144350&profileid=0&eventid=6400&teamid=144345&profileid=15779#1',
        True,
@@ -610,7 +619,7 @@ event.get_flat_boxscores()
        '2',
        [True, False, True, True, True, True, False],
        [1, -1, -2, -3, -4, -3, -6],
-       56808124465928392601326057569822338797)],
+       194657289779722731927805558345645496540)],
      [('Sam Steep',
        'event.php?view=Team&eventid=6400&teamid=144351&profileid=25978#1',
        False,
@@ -618,7 +627,7 @@ event.get_flat_boxscores()
        '5',
        [False, False, False, True, True, True, False, True, False, False],
        [0, 1, 0, -1, -3, -1, -3, -1, -1, -2],
-       136401608053049262970517200004185313382),
+       167330822751632288338617747925261926914),
       ('Richard Krell',
        'event.php?view=Team&eventid=6400&teamid=144349&profileid=25962#1',
        True,
@@ -626,7 +635,7 @@ event.get_flat_boxscores()
        '7',
        [True, True, True, False, False, False, True, False, True, True],
        [0, -1, 0, 1, 3, 1, 3, 1, 1, 2],
-       136401608053049262970517200004185313382),
+       167330822751632288338617747925261926914),
       ('Dayna Deruelle',
        'event.php?view=Team&eventid=6400&teamid=144349&profileid=25962&eventid=6400&teamid=144346&profileid=26636#1',
        False,
@@ -634,7 +643,7 @@ event.get_flat_boxscores()
        '6',
        [False, True, True, False, True, True, True, False, True, False, False],
        [-1, -1, 0, -1, -1, -3, -2, -4, -1, 0, -1],
-       159202123189489213605968902553874703357),
+       337821161345022954627983701079777872530),
       ('Tyler Stewart',
        'event.php?view=Team&eventid=6400&teamid=144349&profileid=25962&eventid=6400&teamid=144352&profileid=12477#1',
        True,
@@ -642,7 +651,7 @@ event.get_flat_boxscores()
        '7',
        [True, False, False, True, False, False, False, True, False, True, True],
        [1, 1, 0, 1, 1, 3, 2, 4, 1, 0, 1],
-       159202123189489213605968902553874703357)],
+       337821161345022954627983701079777872530)],
      [('Richard Krell',
        'event.php?view=Team&eventid=6400&teamid=144349&profileid=25962#1',
        False,
@@ -650,7 +659,7 @@ event.get_flat_boxscores()
        '3',
        [False, False, True, False, False, True, True, False],
        [0, -2, -1, 0, -2, -5, -4, -5],
-       191534675331250747573196731678674907592),
+       41205107010607414736022727949465576436),
       ('Tyler Stewart',
        'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477#1',
        True,
@@ -658,7 +667,7 @@ event.get_flat_boxscores()
        '8',
        [True, True, False, True, True, False, False, True],
        [0, 2, 1, 0, 2, 5, 4, 5],
-       191534675331250747573196731678674907592)],
+       41205107010607414736022727949465576436)],
      [('Tyler Stewart',
        'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477#1',
        False,
@@ -666,7 +675,7 @@ event.get_flat_boxscores()
        '6',
        [False, False, True, False, False, True, False, False, True, False],
        [0, -1, 0, 1, -2, 1, 1, 0, 1, -1],
-       245460210538402974387065153657529984641),
+       337656267050323493383665822966511297443),
       ('Matthew Hall',
        'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1',
        True,
@@ -674,7 +683,7 @@ event.get_flat_boxscores()
        '7',
        [True, True, False, True, True, False, True, True, False, True],
        [0, 1, 0, -1, 2, -1, -1, 0, -1, 1],
-       245460210538402974387065153657529984641)]]
+       337656267050323493383665822966511297443)]]
 
 
 
@@ -692,7 +701,7 @@ event.get_flat_boxscores()[0]
       '0',
       [True, True, True, True],
       [-1, -4, -6, -8],
-      37776744941265228993425249496970051320),
+      92557652136658576678412699092377882692),
      ('Matthew Hall',
       'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1',
       False,
@@ -700,7 +709,7 @@ event.get_flat_boxscores()[0]
       '8',
       [False, False, False, False],
       [1, 4, 6, 8],
-      37776744941265228993425249496970051320),
+      92557652136658576678412699092377882692),
      ('Matthew Mepstead',
       'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435&eventid=6400&teamid=144356#1',
       False,
@@ -708,7 +717,7 @@ event.get_flat_boxscores()[0]
       '4',
       [False, False, True, False, False, True, False, False, False, True, False],
       [0, -2, -1, 0, -1, 0, 0, 0, -1, 0, -1],
-      286529429695487779435223046621329858130),
+      74505835530428901598709612439134825027),
      ('Tyler Stewart',
       'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435&eventid=6400&teamid=144352&profileid=12477#1',
       True,
@@ -716,7 +725,7 @@ event.get_flat_boxscores()[0]
       '5',
       [True, True, False, True, True, False, True, True, True, False, True],
       [0, 2, 1, 0, 1, 0, 0, 0, 1, 0, 1],
-      286529429695487779435223046621329858130),
+      74505835530428901598709612439134825027),
      ('Jason March',
       'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477&eventid=6400&teamid=144350#1',
       False,
@@ -724,7 +733,7 @@ event.get_flat_boxscores()[0]
       '9',
       [False, False, False, False, False, True, False, False, True],
       [0, 2, 2, 3, 2, 4, 6, 3, 5],
-      57484576680602495735252151395332182997),
+      42581081463875970061015035008045933248),
      ('Sam Steep',
       'event.php?view=Team&eventid=6400&teamid=144352&profileid=12477&eventid=6400&teamid=144351&profileid=25978#1',
       True,
@@ -732,7 +741,7 @@ event.get_flat_boxscores()[0]
       '4',
       [True, True, True, True, True, False, True, True, False],
       [0, -2, -2, -3, -2, -4, -6, -3, -5],
-      57484576680602495735252151395332182997)]
+      42581081463875970061015035008045933248)]
 
 
 
@@ -750,7 +759,7 @@ event.get_flat_boxscores()[-1]
       '6',
       [False, False, True, False, False, True, False, False, True, False],
       [0, -1, 0, 1, -2, 1, 1, 0, 1, -1],
-      245460210538402974387065153657529984641),
+      337656267050323493383665822966511297443),
      ('Matthew Hall',
       'event.php?view=Team&eventid=6400&teamid=144347&profileid=12435#1',
       True,
@@ -758,7 +767,7 @@ event.get_flat_boxscores()[-1]
       '7',
       [True, True, False, True, True, False, True, True, False, True],
       [0, 1, 0, -1, 2, -1, -1, 0, -1, 1],
-      245460210538402974387065153657529984641)]
+      337656267050323493383665822966511297443)]
 
 
 

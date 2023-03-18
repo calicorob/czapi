@@ -12,6 +12,7 @@ from uuid import  uuid4
 from ..errors import DifferentScoreLengthError,InvalidScoreError
 from ..utils import make_request_from, make_soup_from
 from ..testing import TagLike
+from time import sleep
 
 # Internal Cell
 
@@ -298,15 +299,29 @@ def get_flat_boxscores_from(cz_event_id:int,cz_draw_id:int)->GameData:
 
 # Cell
 
+
+
+
+
 @dataclass
 class Event:
     cz_event_id : int
+    delay : int =0
+    verbose: bool = False
 
 
     def __post_init__(self)->None:
         response = make_request_from(url = self.url)
         self.soup = make_soup_from(response=response)
-        self.pages = [LinescorePage(cz_event_id = self.cz_event_id,cz_draw_id = draw_id+1) for draw_id in range(self.draws)]
+
+        pages = list()
+        for draw_id in range(self.draws):
+            if self.verbose:
+                print('Scraping draw %s.'%(draw_id+1))
+            pages.append(LinescorePage(cz_event_id = self.cz_event_id,cz_draw_id = draw_id+1))
+            sleep(self.delay)
+
+        self.pages = pages
 
 
     @property
