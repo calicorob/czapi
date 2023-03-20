@@ -57,10 +57,11 @@ def normalize_scores(score_1 : List[str],score_2 : List[str])->Tuple[List[int],L
     if score_1_len != score_2_len:
         raise DifferentScoreLengthError(score_1_len =score_1_len,score_2_len = score_2_len)
 
-    end_1 = []
-    current_diff = 0
 
-    for i in range(score_1_len):
+    current_diff = 0
+    end_1 = [current_diff]
+
+    for i in range(score_1_len-1):
         try:
             val_1 = int(score_1[i])
             val_2 = int(score_2[i])
@@ -82,7 +83,7 @@ def get_hammer_progressions(hammer_start:bool,normalized_score:List[int])->Tuple
     current_hammer = hammer_start
     current_score = 0
     hammer_progression = [hammer_start]
-    for i in range(len(normalized_score)-1):
+    for i in range(1,len(normalized_score)):
         if current_hammer and (normalized_score[i] > current_score):
             current_hammer = False
         if not current_hammer and (normalized_score[i] < current_score):
@@ -298,9 +299,6 @@ def get_flat_boxscores_from(cz_event_id:int,cz_draw_id:int)->GameData:
     return _get_flat_boxscores_from(linescore_page = linescore_page)
 
 # Cell
-
-
-
 
 
 @dataclass
