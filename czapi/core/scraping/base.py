@@ -9,7 +9,7 @@ from abc import ABC, abstractproperty, abstractmethod
 from dataclasses import dataclass
 from typing import Optional, List, Any, Tuple
 from uuid import  uuid4
-from ..errors import DifferentScoreLengthError,InvalidScoreError
+from ..errors import DifferentScoreLengthError,InvalidScoreError,InvalidEventError
 from ..utils import make_request_from, make_soup_from
 from ..testing import TagLike
 from time import sleep
@@ -312,6 +312,9 @@ class Event:
         response = make_request_from(url = self.url)
         self.soup = make_soup_from(response=response)
 
+        if not self.is_valid:
+            raise InvalidEventError(cz_event_id = self.cz_event_id)
+
         pages = list()
         for draw_id in range(self.draws):
             if self.verbose:
@@ -321,6 +324,10 @@ class Event:
 
         self.pages = pages
 
+
+    @property
+    def is_valid(self)->bool:
+        return self.soup.find(name='select') is not None
 
     @property
     def url(self)->str:
