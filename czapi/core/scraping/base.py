@@ -18,7 +18,8 @@ from time import sleep
 
 def generate_dict_from_table(
 
-    table : Tag
+     table : Tag
+    ,**kwargs
 
 )->dict:
     """Helper function for returning the curling boxscore from a bs4 Tag object."""
@@ -34,9 +35,10 @@ def generate_dict_from_table(
     for tag in table.find_all('td'):
         if tag.attrs.get('class') == ['linescoreteam']:
             team = tag.a.string
-            d[team] = {}
+            d[team] = {**kwargs}
             d[team]['href'] = tag.a['href']
             d[team]['score'] = list() # initiate score incase the game hasn't started
+
         elif tag.attrs.get('class') == ['linescorehammer']:
             d[team]['hammer'] = not bool(tag.string) # opposite for some reason
         elif tag.attrs.get('class') == ['linescoreend']:
@@ -102,6 +104,9 @@ class HalfBoxscore:
     hammer : bool
     score : List[str]
     finalscore : str
+    draw_num : int
+    draw : str
+
 
 
 @dataclass
@@ -171,6 +176,10 @@ class Page(ABC):
         pass
 
     @abstractproperty
+    def draw_num(self)->int:
+        pass
+
+    @abstractproperty
     def tables(self)->List[Tag]:
         pass
 
@@ -210,6 +219,10 @@ class LinescorePage(Page):
         return self.soup.find('div',attrs={'class':'badge-widget'}).string
 
     @property
+    def draw_num(self)->int:
+        return self.soup.find(name='select').find_all(name='option').index(self.soup.find(name='option',attrs={'selected':'selected'}))+1
+
+    @property
     def draw(self)->str:
         return self.soup.find(name='option',attrs={'selected':'selected'}).string
 
@@ -218,7 +231,7 @@ class LinescorePage(Page):
         return self.soup.find_all(name = 'table',attrs={'class':'linescorebox'})
 
     def generate_boxscores(self)->List[dict]:
-        return [generate_dict_from_table(table=table) for table in self.tables]
+        return [generate_dict_from_table(table=table,draw=self.draw,draw_num=self.draw_num) for table in self.tables]
 
     def generate_normalized_boxscores(self)->List[NormalizedBoxscore]:
         return [NormalizedBoxscore(boxscore=boxscore) for boxscore in self.boxscores]
@@ -251,6 +264,7 @@ class BadLinescorePage(Page):
                  ,event_name:str=None
                  ,event_date:str=None
                  ,draw:str=None
+                 ,draw_num:int=None
                  ,tables:List[TagLike]=None
                  ,boxscores:List[dict]=None
                  ,normalized_boxscores:List[NormalizedBoxscore]=None
@@ -259,6 +273,7 @@ class BadLinescorePage(Page):
         self.event_name = event_name
         self.event_date = event_date
         self.draw = draw
+        self.draw_num = draw_num
         self.tables = tables
         self.boxscores = boxscores
         self.normalized_boxscores = normalized_boxscores
@@ -273,6 +288,8 @@ class BadLinescorePage(Page):
     def event_date(self)->str:
         return ''
 
+    def draw_num(self)->int:
+        return 1
 
     def draw(self)->str:
         return ''
@@ -286,10 +303,10 @@ class BadLinescorePage(Page):
 
 # Internal Cell
 
-GameData = List[Tuple[str,str,bool,List[str],str,List[bool],List[int],int]]
+GameData = List[Tuple[str,str,bool,List[str],str,int,str,List[bool],List[int],int]]
 def _get_flat_boxscores_from(linescore_page:LinescorePage)->GameData:
     flattened_boxscores = [boxscore.flattened_normalized_boxscore for boxscore in linescore_page.normalized_boxscores]
-    return [(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7]) for f in flattened_boxscores for row in f]
+    return [(row[0],row[1],row[2],row[3],row[4],row[5],row[6],row[7],row[8],row[9]) for f in flattened_boxscores for row in f]
 
 # Cell
 
