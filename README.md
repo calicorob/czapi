@@ -140,7 +140,7 @@ print(linescore_page.event_name,',',linescore_page.event_date)
 ```
 
     Ontario Tankard - Open Qualifier , Jan 17 - 19, 2020
-
+    
 
 For convenience, upon instantiation of a `LinescorePage` object, a `NormalizedBoxscore` instance for each boxscore is created. A `NormalizedBoxscore` holds the same information as a boxscore dictionary with two new pieces of information added: 
 1. The hammer progression for both teams throughout the game, i.e. who had hammer in what end.
@@ -320,7 +320,7 @@ event
     Scraping draw 5.
     Scraping draw 6.
     Scraping draw 7.
-
+    
 
 
 
