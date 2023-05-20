@@ -318,6 +318,8 @@ game_data_column_headers = (
     ,'hammer_start'
     ,'score'
     ,'final_score'
+    ,'draw_num'
+    ,'draw'
     ,'hammer_progression'
     ,'relative_score'
     ,'guid'
