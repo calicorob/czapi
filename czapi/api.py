@@ -1,3 +1,6 @@
 
-__all__ = []
+__all__ = ["LinescorePage"]
 
+from czapi.core.scraping.base import(
+    LinescorePage
+)
