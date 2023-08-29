@@ -1,9 +1,10 @@
 from dataclasses import dataclass, field
-from typing import Tuple, Any
 from bs4 import Tag
 from abc import ABC, abstractmethod,abstractproperty
+from typing import  Type
 from czapi.core.utils import make_request_from, make_soup_from
 from uuid import uuid4
+
 
 @dataclass
 class ScrapedBoxscore:
@@ -17,6 +18,9 @@ class ScrapedBoxscore:
 
     def add_score(self,end_score:str)->None:
         self.score.append(end_score)
+
+    def __eq__(self,other:Type['ScrapedBoxscore'])->bool:
+        return (self.team_name == other.team_name and self.href == other.href and self.hammer_start == other.hammer_start and self.score == other.score and self.final_score == other.final_score and self.boxscore_guid == other.boxscore_guid)
 
 
 def generate_scraped_boxscore_from_table(table:Tag)->tuple[ScrapedBoxscore]:
